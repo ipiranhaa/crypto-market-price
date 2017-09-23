@@ -11,7 +11,7 @@ function getCurrency(from, to) {
   request.get(uri, function(err, resp, body) {
     if (!err) {
       body = JSON.parse(body);
-      thb = body.query.results.row.rate;
+      thb = !_.isUndefined(body.query.results.row.rate) ? body.query.results.row.rate : 33;
     }
   });
 }

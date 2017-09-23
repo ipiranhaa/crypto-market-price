@@ -26,7 +26,7 @@ function updateOnlineUser(oper) {
     onlineUser--;
   }
   
-  console.log(onlineUser + 'users online');
+  console.log(onlineUser + ' users online');
   io.emit('online', onlineUser);
 }
 
@@ -42,7 +42,15 @@ function sendCache() {
 
 io.on('connection', function(socket) {
   console.log('a user connected');
-  sendCache();
+  bx.fetch(function(data) {
+    bxCache = data;
+    io.emit('bx', data)
+  });
+  
+  bfx.fetch(function(data) {
+    bfxCache = data;
+    io.emit('bfx', data)  
+  });
   updateOnlineUser('+');
 
   socket.on('disconnect', function() {
