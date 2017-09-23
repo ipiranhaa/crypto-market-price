@@ -1,2 +1,21 @@
-html {
-  font-family: 'Open Sans', sans-serif; }
+body, html {
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
+  height: 100%; }
+
+div.left, div.right {
+  height: 100%;
+  padding: 0; }
+
+div.left div.title, div.right div.title {
+  height: 10%;
+  background-color: #34495e; }
+
+div.left div.title h3, div.right div.title h3 {
+  text-align: center; }
+
+div.left {
+  background-color: #3498db; }
+
+div.right {
+  background-color: #2ecc71; }
