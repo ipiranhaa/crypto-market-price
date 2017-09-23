@@ -1,0 +1,16 @@
+{
+  "name": "cypto-market-price",
+  "version": "1.0.0",
+  "description": "Market price compare",
+  "main": "index.js",
+  "repository": "https://github.com/ipiranhaa/crypto-market-price.git",
+  "author": "iPiranhaa",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.4",
+    "lodash": "^4.17.4",
+    "node-currency-swap": "^1.0.6",
+    "socket.io": "^2.0.3"
+  },
+  "devDependencies": {}
+}
