@@ -10,7 +10,12 @@
     "express": "^4.15.4",
     "lodash": "^4.17.4",
     "node-currency-swap": "^1.0.6",
+    "node-sass": "^4.5.3",
     "socket.io": "^2.0.3"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js",
+    "scss": "node-sass public/css/ -o public/css/ --watch"
+  }
 }

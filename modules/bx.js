@@ -11,6 +11,16 @@ const filter = [
   26  // OMG
 ]
 
+function parser(data) {
+  return {
+    name: data.secondary_currency,
+    last_price: data.last_price,
+    currency: data.primary_currency,
+    change: data.change,
+    volume: data.volume_24hours
+  }
+}
+
 const fetch = function(callback) {
   callback = callback || function() {};
   const val = []
@@ -18,7 +28,7 @@ const fetch = function(callback) {
     if (!err) {
       const data = JSON.parse(resp.body);
       _.each(filter, function(num) {
-        val.push(data[num.toString()]);
+        val.push(parser(data[num.toString()]));
       })
       
       callback(val);
