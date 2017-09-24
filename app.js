@@ -58,17 +58,19 @@ io.on('connection', function(socket) {
   });
 });
 
-bx.fetch(function(data) {
-  // console.log('<< BX >>', data);
-  bxCache = data;
-  io.emit('bx', data)
-});
+setInterval(function(){
+  bx.fetch(function(data) {
+    // console.log('<< BX >>', data);
+    bxCache = data;
+    io.emit('bx', data)
+  });
 
-bfx.fetch(function(data) {
-  // console.log('<< BFX >>', data);
-  bfxCache = data;
-  io.emit('bfx', data)  
-});
+  bfx.fetch(function(data) {
+    // console.log('<< BFX >>', data);
+    bfxCache = data;
+    io.emit('bfx', data)  
+  });
+}, 30000);
  
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
