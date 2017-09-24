@@ -12,7 +12,7 @@ let bxCache = {};
 let bfxCache = {};
 let onlineUser = 0;
  
-const server = app.listen(4004, function() {
+const server = app.listen(process.env.PORT || 3000, function() {
   console.log('Listening...');
 });
 
