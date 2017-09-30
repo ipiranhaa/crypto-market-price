@@ -11,11 +11,20 @@
     "lodash": "^4.17.4",
     "node-currency-swap": "^1.0.6",
     "node-sass": "^4.5.3",
-    "socket.io": "^2.0.3"
+    "socket.io": "^2.0.3",
+    "uglify-es": "^3.1.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-ruby-sass": "^2.1.1",
+    "gulp-sequence": "^0.4.6",
+    "gulp-uglify": "^3.0.0",
+    "pump": "^1.0.2"
+  },
   "scripts": {
     "start": "node app.js",
-    "scss": "node-sass public/css/ -o public/css/ --watch"
+    "dev": "gulp"
   }
 }
