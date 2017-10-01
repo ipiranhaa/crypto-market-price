@@ -13,7 +13,7 @@ let bfxCache = {};
 let onlineUser = 0;
  
 const server = app.listen(process.env.PORT || 3000, function() {
-  console.log('Listening...');
+  console.log('Listening... :3000');
 });
 
 // socket
@@ -41,7 +41,11 @@ function sendCache() {
 }
 
 io.on('connection', function(socket) {
-  console.log('a user connected');
+  const ip = socket.handshake.address;
+  console.log('a user connected with ' + ip);
+
+  io.emit('ip', ip) ;
+  
   bx.fetch(function(data) {
     bxCache = data;
     io.emit('bx', data)
