@@ -40,21 +40,21 @@ function sendCache() {
   }
 }
 
+bx.fetch(function(data) {
+  bxCache = data;
+});
+
+bfx.fetch(function(data) {
+  bfxCache = data;
+});
+
 io.on('connection', function(socket) {
   const ip = socket.handshake.address;
   console.log('a user connected with ' + ip);
 
   io.emit('ip', ip) ;
-  
-  bx.fetch(function(data) {
-    bxCache = data;
-    io.emit('bx', data)
-  });
-  
-  bfx.fetch(function(data) {
-    bfxCache = data;
-    io.emit('bfx', data)  
-  });
+  io.emit('bx', bxCache)
+  io.emit('bfx', bfxCache) 
   updateOnlineUser('+');
 
   socket.on('disconnect', function() {

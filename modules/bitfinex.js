@@ -2,7 +2,7 @@ const request = require('request');
 const _ = require('lodash');
 
 const url = "https://api.bitfinex.com/v1"
-const filter = ['btcusd', 'ethusd', 'omgusd'];
+const filter = ['btcusd', 'ethusd', 'omgusd', 'xrpusd'];
 const currency = 'usd'
 let thb = 1;
 

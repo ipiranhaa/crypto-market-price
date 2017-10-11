@@ -1,2 +1,4 @@
 node_modules
 .sass-cache
+public/css/style.min.css
+public/css/style.css

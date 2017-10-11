@@ -8,7 +8,8 @@ const uri = {
 const filter = [
   1,  // BTC
   21, // ETH
-  26  // OMG
+  26, // OMG
+  25, // XRP
 ]
 
 function parser(data) {
@@ -34,7 +35,6 @@ const fetch = function(callback) {
       callback(val);
     } else {
       console.log('error:', err);
-      callback(false);
     }
   });
 }
