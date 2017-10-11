@@ -17,7 +17,7 @@ gulp.task('build', gulpSequence('compress', 'merge', 'clean', 'sass'));
  
 gulp.task('sass', function(cb) {
     pump([
-      sass('public/css/*scss', {style: 'compressed'}),
+      sass('public/css/*.scss', {style: 'compressed'}),
       gulp.dest('public/build')
     ], cb);
 });
