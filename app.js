@@ -49,10 +49,6 @@ bfx.fetch(function(data) {
 });
 
 io.on('connection', function(socket) {
-  const ip = socket.handshake.address;
-  console.log('a user connected with ' + ip);
-
-  io.emit('ip', ip) ;
   io.emit('bx', bxCache)
   io.emit('bfx', bfxCache) 
   updateOnlineUser('+');

