@@ -19,7 +19,7 @@ const server = app.listen(process.env.PORT || 3000, function() {
 // socket
 const io = require('socket.io').listen(server);
 
-function updateOnlineUser(oper) {
+updateOnlineUser = (oper) => {
   if (oper === '+') {
     onlineUser++;
   } else {
@@ -30,7 +30,7 @@ function updateOnlineUser(oper) {
   io.emit('online', onlineUser);
 }
 
-function sendCache() {
+sendCache = () => {
   if (!_.isEmpty(bxCache)) {
     io.emit('bx', bxCache);        
   }
@@ -60,13 +60,11 @@ io.on('connection', function(socket) {
 
 setInterval(function(){
   bx.fetch(function(data) {
-    // console.log('<< BX >>', data);
     bxCache = data;
     io.emit('bx', data)
   });
 
   bfx.fetch(function(data) {
-    // console.log('<< BFX >>', data);
     bfxCache = data;
     io.emit('bfx', data)  
   });

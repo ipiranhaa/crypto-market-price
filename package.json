@@ -15,7 +15,10 @@
     "uglify-es": "^3.1.2"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
     "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.1",
     "gulp-ruby-sass": "^2.1.1",
@@ -26,6 +29,6 @@
   "scripts": {
     "start": "node app.js",
     "build": "gulp build",
-    "dev": "gulp"
+    "dev": "gulp dev"
   }
 }

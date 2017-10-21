@@ -8,12 +8,17 @@ var pump = require('pump');
 var concat = require('gulp-concat');
 var clean = require('gulp-clean');
 var gulpSequence = require('gulp-sequence');
+var babel = require('gulp-babel');
 
 gulp.task('default', ['sass'], function() {
   gulp.watch("public/css/*.scss", ['sass']);
 });
 
 gulp.task('build', gulpSequence('compress', 'merge', 'clean', 'sass'));
+gulp.task('dev', ['compress', 'merge', 'clean', 'sass'], function() {
+  gulp.watch("public/css/*.scss", ['sass']);
+  gulp.watch("public/css/*.scss", ['sass']);
+});
  
 gulp.task('sass', function(cb) {
     pump([
@@ -26,6 +31,7 @@ gulp.task('compress', function(cb) {
   var options = {};
   pump([
     gulp.src('public/js/*.js'),
+    babel({presets: ['env']}),
     minify(options),
     gulp.dest('public/build/dist')
   ], cb);

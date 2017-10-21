@@ -6,7 +6,7 @@ const filter = ['btcusd', 'ethusd', 'omgusd', 'xrpusd'];
 const currency = 'usd'
 let thb = 1;
 
-function getCurrency(from, to) {
+getCurrency = (from, to) => {
   const uri = "http://query.yahooapis.com/v1/public/yql?q=select%20rate%2Cname%20from%20csv%20where%20url%3D'http%3A%2F%2Fdownload.finance.yahoo.com%2Fd%2Fquotes%3Fs%3D" + from + to + "%253DX%26f%3Dl1n'%20and%20columns%3D'rate%2Cname'&format=json";
   request.get(uri, function(err, resp, body) {
     if (!err) {
@@ -21,7 +21,7 @@ setInterval(function(){
   getCurrency('usd', 'thb');
 }, 600000);
 
-function parser(data) {
+parser = (data) => {
   return {
     name: data.name,
     last_price: data.last_price * thb,
@@ -31,7 +31,7 @@ function parser(data) {
   }
 }
 
-function get(symbol, callback) {
+get = (symbol, callback) => {
   request.get(url + "/pubticker/" + symbol,
     function(err, resp, body) {
     if (!err) {
@@ -42,7 +42,7 @@ function get(symbol, callback) {
   });
 }
 
-function fetch(callback) {
+fetch = (callback) => {
   callback = callback || function() {};
   const val = [];
   _.each(filter, function(symbol) {
