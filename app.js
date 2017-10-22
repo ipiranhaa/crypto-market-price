@@ -5,14 +5,20 @@ const path = require('path');
 // src
 const bx = require('./modules/bx.js');
 const bfx = require('./modules/bitfinex.js');
+const coinbase = require('./modules/coinbase.js');
+const cex = require('./modules/cex.js');
 const util = require('./modules/utils.js');
 const _ = require('lodash');
 
+let onlineUser = 0;
 let bxCache = [];
 let bfxCache = [];
-let onlineUser = 0;
+let coinbaseCache = [];
+let cexCache = [];
 let isBxFetched = false;
 let isBfxFetched = false;
+let isCoinbaseFetched = false;
+let isCexFetched = false;
 
 const server = app.listen(process.env.PORT || 3000, function() {
   console.log('Listening... :3000');
@@ -42,6 +48,14 @@ function sendCache() {
     // console.log('send bfx cache');
     io.emit('bfx', bfxCache);        
   }
+
+  if (isCoinbaseFetched) {
+    io.emit('coinbase', coinbaseCache);        
+  }
+
+  if (isCexFetched) {
+    io.emit('cex', cexCache);        
+  }
 }
 
 util.getCurrency('usd', 'thb', function(value) { 
@@ -55,6 +69,16 @@ util.getCurrency('usd', 'thb', function(value) {
   bfx.fetch(function(data) {
     isBfxFetched = true;
     bfxCache = data;
+  });
+
+  coinbase.fetch(function(data) {
+    isCoinbaseFetched = true;
+    coinbaseCache = data;
+  });
+
+  cex.fetch(function(data) {
+    isCexFetched = true;
+    cexCache = data;
   });
 })
 
@@ -83,6 +107,16 @@ setInterval(function(){
   bfx.fetch(function(data) {
     bfxCache = data;
     io.emit('bfx', data)  
+  });
+
+  coinbase.fetch(function(data) {
+    coinbaseCache = data;
+    io.emit('coinbase', data)  
+  });
+
+  cex.fetch(function(data) {
+    cexCache = data;
+    io.emit('cex', data)  
   });
 }, 30000);
  

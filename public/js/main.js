@@ -30,3 +30,7 @@ socket.on('bfx', function(msg) {
     }
   }, this);
 });
+
+socket.on('coinbase', function(msg) {
+  console.log('COINBASE: ', msg);
+});
