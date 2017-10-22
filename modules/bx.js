@@ -22,8 +22,8 @@ function parser(data) {
   }
 }
 
-const fetch = function(callback) {
-  callback = callback || function() {};
+function fetch(callback) {
+  callback = callback || function(){};
   const val = []
   request(uri.fetch, function (err, resp) {
     if (!err) {
@@ -42,4 +42,4 @@ const fetch = function(callback) {
 
 module.exports = {
   fetch
-};
+}

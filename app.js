@@ -5,13 +5,15 @@ const path = require('path');
 // src
 const bx = require('./modules/bx.js');
 const bfx = require('./modules/bitfinex.js');
+const util = require('./modules/utils.js');
 const _ = require('lodash');
 
-
-let bxCache = {};
-let bfxCache = {};
+let bxCache = [];
+let bfxCache = [];
 let onlineUser = 0;
- 
+let isBxFetched = false;
+let isBfxFetched = false;
+
 const server = app.listen(process.env.PORT || 3000, function() {
   console.log('Listening... :3000');
 });
@@ -30,33 +32,47 @@ updateOnlineUser = (oper) => {
   io.emit('online', onlineUser);
 }
 
-sendCache = () => {
-  if (!_.isEmpty(bxCache)) {
+function sendCache() {
+  if (isBxFetched) {
+    // console.log('send bx cache');
     io.emit('bx', bxCache);        
   }
 
-  if (!_.isEmpty(bfxCache)) {
+  if (isBfxFetched) {
+    // console.log('send bfx cache');
     io.emit('bfx', bfxCache);        
   }
 }
 
-bx.fetch(function(data) {
-  bxCache = data;
-});
-
-bfx.fetch(function(data) {
-  bfxCache = data;
-});
+util.getCurrency('usd', 'thb', function(value) { 
+  console.log('1 USD = ' + value + ' THB')
+  global.THB = value;
+  bx.fetch(function(data) {
+    isBxFetched = true;
+    bxCache = data;
+  });
+  
+  bfx.fetch(function(data) {
+    isBfxFetched = true;
+    bfxCache = data;
+  });
+})
 
 io.on('connection', function(socket) {
-  io.emit('bx', bxCache)
-  io.emit('bfx', bfxCache) 
+  sendCache();
   updateOnlineUser('+');
 
   socket.on('disconnect', function() {
     updateOnlineUser('-');
   });
 });
+
+setInterval(function(){
+  util.getCurrency('usd', 'thb', function(value) { 
+    console.log('1 USD = ' + value + ' THB')
+    global.THB = value;
+  })
+}, 600000);
 
 setInterval(function(){
   bx.fetch(function(data) {
