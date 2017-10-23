@@ -25,10 +25,12 @@ function get(symbol, callback) {
   const uri = url + "/getticker?market=" + symbol;
   request.get(uri,
     function(err, resp, body) {
+      if (!err) {
       body = JSON.parse(body);
-      if (!err && body.success) {
+      if (body.success) {
         body.result.name = symbol.split('USDT-')[1];
         callback(body.result)
+       }
     }
   });
 }

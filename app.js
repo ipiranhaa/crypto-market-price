@@ -61,7 +61,7 @@ function sendCache() {
   }
 
   if (isBittrexFetched) {
-    io.emit('biitrex', bittrexCache);        
+    io.emit('bittrex', bittrexCache);        
   }
 }
 

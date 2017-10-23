@@ -1,41 +1,34 @@
-$tab_color: #34495e;
+$tab_color: #3c3c3c;
+$background: #252526;
+$font: #fff;
 
 body, html {
   font-family: 'Open Sans', sans-serif;
-  color: #fff;
+  color: $font;
   height: 100%;
   overflow: hidden;
+  background-color: $background;
 }
 
-h3 {
-  font-size: 4vh;
-}
-
-div.left, div.right {
+.custom-container {
+  width: 100%;
   height: 100%;
-  padding: 0;
+  margin: 0;
+  padding: 0px 15px;
+}
 
-  div.title {
-    height: 10%;
-    background-color: $tab_color;
+.header {
+  height: 6vw;
+  background-color: #3c3c3c;
 
-    h3 {
-      text-align: center;
-    }
+  .title {
+    font-size: 2vw;    
   }
-}
-
-div.left {
-  background-color: #3498db;
-}
-
-div.right {
-  background-color: #2ecc71;
 }
 
 span.price {
   text-align: center;
-  font-size: 3vh;
+  font-size: 2vw;
 }
 
 div.content {
@@ -43,27 +36,52 @@ div.content {
   line-height: 8;
 }
 
+span.coin-name {
+  font-size: 2vw;
+}
+
 img.icon {
-  width: 24px;
-  height: 24px;
-  margin-left: 6px; 
-  margin-top: -4px;
+  width: 2vw;
+  height: 2vw;
 }
 
 .footer {
+  width: 100%;
   position: absolute;
   bottom: 0;
-  height: 30px;
+  height: 6vw;
   background-color: $tab_color;
-  line-height: 28px;
+  line-height: 6vw;
   padding: 0;
 
   .online-user {
     text-align: right;
   }
+
+  .col {
+    line-height: 6vw;
+  }
+
+  @media only screen 
+    and (min-device-width : 375px) 
+    and (max-device-width : 667px) {
+      .col {
+        line-height: 4vw;
+      }
+  }
 }
 
 span.online {
   text-align: right;
-  font-size: 2vh;
+  font-size: 2vw;
+}
+
+.content-row {
+  height: 10vw;
+
+  .col {
+    line-height: 10vw;
+    padding: 0px 6px;
+    vertical-align: middle;
+  }
 }

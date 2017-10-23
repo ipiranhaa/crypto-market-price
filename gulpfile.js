@@ -15,8 +15,7 @@ gulp.task('default', ['sass'], function() {
 });
 
 gulp.task('build', gulpSequence('compress', 'merge', 'clean', 'sass'));
-gulp.task('dev', ['compress', 'merge', 'clean', 'sass'], function() {
-  gulp.watch("public/css/*.scss", ['sass']);
+gulp.task('dev', ['sass'], function() {
   gulp.watch("public/css/*.scss", ['sass']);
 });
  
