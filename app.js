@@ -7,6 +7,7 @@ const bx = require('./modules/bx.js');
 const bfx = require('./modules/bitfinex.js');
 const coinbase = require('./modules/coinbase.js');
 const cex = require('./modules/cex.js');
+const bittrex = require('./modules/bittrex.js');
 const util = require('./modules/utils.js');
 const _ = require('lodash');
 
@@ -15,10 +16,12 @@ let bxCache = [];
 let bfxCache = [];
 let coinbaseCache = [];
 let cexCache = [];
+let bittrexCache = [];
 let isBxFetched = false;
 let isBfxFetched = false;
 let isCoinbaseFetched = false;
 let isCexFetched = false;
+let isBittrexFetched = false;
 
 const server = app.listen(process.env.PORT || 3000, function() {
   console.log('Listening... :3000');
@@ -56,6 +59,10 @@ function sendCache() {
   if (isCexFetched) {
     io.emit('cex', cexCache);        
   }
+
+  if (isBittrexFetched) {
+    io.emit('biitrex', bittrexCache);        
+  }
 }
 
 util.getCurrency('usd', 'thb', function(value) { 
@@ -80,6 +87,11 @@ util.getCurrency('usd', 'thb', function(value) {
     isCexFetched = true;
     cexCache = data;
   });
+
+  bittrex.fetch(function(data) {
+    isBittrexFetched = true;
+    bittrexCache = data;
+  });
 })
 
 io.on('connection', function(socket) {
@@ -101,22 +113,27 @@ setInterval(function(){
 setInterval(function(){
   bx.fetch(function(data) {
     bxCache = data;
-    io.emit('bx', data)
+    io.emit('bx', data);
   });
 
   bfx.fetch(function(data) {
     bfxCache = data;
-    io.emit('bfx', data)  
+    io.emit('bfx', data);
   });
 
   coinbase.fetch(function(data) {
     coinbaseCache = data;
-    io.emit('coinbase', data)  
+    io.emit('coinbase', data);  
   });
 
   cex.fetch(function(data) {
     cexCache = data;
-    io.emit('cex', data)  
+    io.emit('cex', data);
+  });
+
+  bittrex.fetch(function(data) {
+    bittrexCache = data;
+    io.emit('bittrex', data);
   });
 }, 30000);
  

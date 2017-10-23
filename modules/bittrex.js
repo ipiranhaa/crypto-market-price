@@ -1,19 +1,19 @@
 const request = require('request');
 const _ = require('lodash');
 
-const url = "https://api.coinbase.com/v2"
+const url = "https://bittrex.com/api/v1.1/public"
 const filter = [
-  'btc-usd', // BTC
-  'eth-usd', // ETH
-  // 'omg-usd', // OMG
-  // 'xrp-usd'  // XRP
+  'USDT-BTC', // BTC
+  'USDT-ETH', // ETH
+  'USDT-OMG', // OMG
+  'USDT-XRP'  // XRP
 ];
 const currency = 'usd'
 
 function parser(data) {
   return {
-    name: data.base,
-    last_price: data.amount * global.THB,
+    name: data.name,
+    last_price: data.Last * global.THB,
     currency: 'THB',
     change: null,
     volume: null
@@ -22,12 +22,13 @@ function parser(data) {
 
 function get(symbol, callback) {
   callback = callback || function(){};
-  const uri = url + "/prices/" + symbol.toUpperCase() + '/spot';
+  const uri = url + "/getticker?market=" + symbol;
   request.get(uri,
     function(err, resp, body) {
-    if (!err) {
       body = JSON.parse(body);
-      callback(body.data)
+      if (!err && body.success) {
+        body.result.name = symbol.split('USDT-')[1];
+        callback(body.result)
     }
   });
 }
