@@ -25,7 +25,7 @@ function get(symbol, callback) {
   const uri = url + "/getticker?market=" + symbol;
   request.get(uri,
     function(err, resp, body) {
-      if (!err) {
+      if (!err && resp.body[0] !== '<') {
       body = JSON.parse(body);
       if (body.success) {
         body.result.name = symbol.split('USDT-')[1];

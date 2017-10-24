@@ -24,7 +24,7 @@ function get(symbol, callback) {
   callback = callback || function(){};
   request.get(url + "/pubticker/" + symbol,
     function(err, resp, body) {
-    if (!err) {
+    if (!err && resp.body[0] !== '<') {
       body = JSON.parse(body);
       body.name = symbol.split(currency)[0].toUpperCase();
       callback(body)

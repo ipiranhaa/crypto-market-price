@@ -24,7 +24,7 @@ function fetch(callback) {
   callback = callback || function(){};
   const val = []
   request(uri.fetch, function (err, resp) {
-    if (!err) {
+    if (!err && resp.body[0] !== '<') {
       const data = JSON.parse(resp.body);
       _.each(data.data, function(obj) {
         if (obj.pair === filter[0]) {

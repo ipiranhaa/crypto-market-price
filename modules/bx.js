@@ -26,7 +26,7 @@ function fetch(callback) {
   callback = callback || function(){};
   const val = []
   request(uri.fetch, function (err, resp) {
-    if (!err) {
+    if (!err && resp.body[0] !== '<') {
       const data = JSON.parse(resp.body);
       _.each(filter, function(num) {
         val.push(parser(data[num.toString()]));
