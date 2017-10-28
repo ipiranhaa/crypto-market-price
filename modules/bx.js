@@ -10,6 +10,7 @@ const filter = [
   21, // ETH
   26, // OMG
   25, // XRP
+  28, // EVX
 ]
 
 function parser(data) {

@@ -3,7 +3,7 @@ const socket = io();
 function assignHtmlValue(htmlClass, msg) {
   msg.forEach(function(obj) {
     const price = obj.last_price % 1 !== 0 ? obj.last_price.toFixed(2) : obj.last_price;    
-    const className = 'span.' + htmlClass + '-' + obj.name.toLowerCase();
+    const className = '.' + htmlClass + '-' + obj.name.toLowerCase();
     if ($(className).text() != price) {
       $(className).fadeOut(function() {
         $(this).text(price);
@@ -39,4 +39,9 @@ socket.on('cex', function(msg) {
 socket.on('bittrex', function(msg) {
   // console.log('BITTREX: ', msg);
   assignHtmlValue('btx', msg);  
+});
+
+socket.on('binance', function(msg) {
+  // console.log('BINANCE: ', msg);
+  assignHtmlValue('bin', msg);  
 });
