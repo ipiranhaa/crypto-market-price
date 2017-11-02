@@ -4,10 +4,12 @@ const _ = require('lodash');
 const uri = {
   fetch: 'https://cex.io/api/tickers/USD'
 }
+let btc2usd = '';
 
 const filter = [
   'BTC:USD',  // BTC
   'ETH:USD',  // ETH
+  'BCH:USD'  // ETH
 ]
 
 function parser(data) {
@@ -26,14 +28,13 @@ function fetch(callback) {
   request(uri.fetch, function (err, resp) {
     if (!err && resp.body[0] !== '<') {
       const data = JSON.parse(resp.body);
-      _.each(data.data, function(obj) {
-        if (obj.pair === filter[0]) {
-          obj.name = filter[0].split(':')[0];
-          val.push(parser(obj));
-        } else if (obj.pair === filter[1]) {
-          obj.name = filter[1].split(':')[0];
-          val.push(parser(obj));
-        }
+      const coins = _.filter(data.data, function(coin) {
+        return _.indexOf(filter, coin.pair) > -1;
+      })
+
+      _.each(coins, function(obj) {
+        obj.name = (obj.pair).split(':')[0];
+        val.push(parser(obj));
       })
       
       callback(val);

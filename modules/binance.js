@@ -1,27 +1,29 @@
 const request = require('request');
 const _ = require('lodash');
+const util = require('./utils.js');
 
 const url = 'https://www.binance.com/api/v1';
 let btc2usd = '';
 
 const filter = [
   'BTCUSDT',  // BTC
-  'ETHUSDT', // ETH
-  'OMGBTC', // OMG
+  'ETHUSDT',  // ETH
+  'OMGBTC',   // OMG
   // 'XRPBTC', // XRP
-  'EVXBTC'  // EVX
+  'EVXBTC',   // EVX
+  'BCCBTC'    // BCH
 ]
 
 function parser(data) {
   const result = {
-    last_price: data.last_price,
-    currency: data.primary_currency,
-    change: data.change,
-    volume: data.volume_24hours
+    last_price: data.price,
+    currency: 'THB',
+    change: null,
+    volume: null
   }
 
   const srcCurrency = (data.symbol).slice(3);
-  result.name = (data.symbol).slice(0, 3);
+  result.name = util.nameConverter((data.symbol).slice(0, 3));
 
   if (srcCurrency === 'USDT') {
     if (result.name === 'BTC') {

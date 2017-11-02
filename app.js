@@ -101,6 +101,7 @@ util.getCurrency('usd', 'thb', function(value) {
   });
 
   binance.fetch(function(data) {
+    console.log(data)
     isBinanceFetched = true;
     binanceCache = data;
   });
@@ -152,7 +153,7 @@ setInterval(function(){
     binanceCache = data;
     io.emit('binance', data);
   });
-}, 30000);
+}, 20000);
  
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));

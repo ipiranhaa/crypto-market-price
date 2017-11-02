@@ -1,18 +1,20 @@
 const request = require('request');
 const _ = require('lodash');
+const util = require('./utils.js');
 
 const url = "https://api.bitfinex.com/v1"
 const filter = [
   'btcusd', // BTC
   'ethusd', // ETH
   'omgusd', // OMG
-  'xrpusd'  // XRP
+  'xrpusd', // XRP
+  'bchusd'  // BCH
 ];
 const currency = 'usd'
 
 function parser(data) {
   return {
-    name: data.name,
+    name: util.nameConverter(data.name),
     last_price: data.last_price * global.THB,
     currency: 'THB',
     change: null,

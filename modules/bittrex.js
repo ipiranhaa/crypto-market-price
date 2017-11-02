@@ -1,18 +1,20 @@
 const request = require('request');
 const _ = require('lodash');
+const util = require('./utils.js');
 
 const url = "https://bittrex.com/api/v1.1/public"
 const filter = [
   'USDT-BTC', // BTC
   'USDT-ETH', // ETH
   'USDT-OMG', // OMG
-  'USDT-XRP'  // XRP
+  'USDT-XRP',  // XRP
+  'USDT-BCC'  // XRP
 ];
 const currency = 'usd'
 
 function parser(data) {
   return {
-    name: data.name,
+    name: util.nameConverter(data.name),
     last_price: data.Last * global.THB,
     currency: 'THB',
     change: null,
