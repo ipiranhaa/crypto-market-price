@@ -53,10 +53,10 @@ function updateOnlineUser(oper) {
   io.emit('online', onlineUser);
 }
 
-function welcomeMsg() {
-  io.emit('notification', configMsg.hello);
+function welcomeMsg(socket) {
+  socket.emit('notification', configMsg.hello);
   setTimeout(function() {
-    io.emit('notification', configMsg.donate);
+    socket.emit('notification', configMsg.donate);
   }, 4000)
 }
 
@@ -134,7 +134,7 @@ util.getCurrency('usd', 'thb', function(value) {
 io.on('connection', function(socket) {
   sendCache();
   updateOnlineUser('+');
-  welcomeMsg();
+  welcomeMsg(socket);
 
   socket.on('disconnect', function() {
     updateOnlineUser('-');
