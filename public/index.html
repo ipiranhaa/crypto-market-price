@@ -14,7 +14,9 @@
 <body>
   <div class="custom-container">
     <div class="header row align-items-center">
-      <div class="col"></div>
+      <div class="col">
+        <span class="title">#</span>
+      </div>
       <div class="col">
         <span class="title">bx.in.th</span>
       </div>
@@ -30,8 +32,11 @@
       <div class="col">
         <span class="title">cex.io</span>
       </div>
-      <div class="col">
+      <!-- <div class="col">
         <span class="title">coinbase</span>
+      </div> -->
+      <div class="col">
+        <span class="title">coinmarketcap</span>
       </div>
     </div>
 
@@ -55,33 +60,11 @@
       <div class="col">
         <span class="price cex-btc">-</span>
       </div>
-      <div class="col">
+      <!-- <div class="col">
         <span class="price cb-btc">-</span>
-      </div>
-    </div>
-
-    <div class="row content-row">
+      </div> -->
       <div class="col">
-        <img class="icon "src="img/bch-icon.png" alt="Bitcoin cash">
-        <span class="coin-name">BCH</span>
-      </div>
-      <div class="col">
-        <span class="price bx-bch">-</span>
-      </div>
-      <div class="col">
-        <span class="price bfx-bch">-</span>
-      </div>
-      <div class="col">
-        <span class="price btx-bch">-</span>
-      </div>
-      <div class="col">
-        <span class="price bin-bch">-</span>
-      </div>
-      <div class="col">
-        <span class="price cex-bch">-</span>
-      </div>
-      <div class="col">
-        <span class="price cb-bch">-</span>
+        <span class="price cmc-btc">-</span>
       </div>
     </div>
 
@@ -105,10 +88,41 @@
       <div class="col">
         <span class="price cex-eth">-</span>
       </div>
-      <div class="col">
+      <!-- <div class="col">
         <span class="price cb-eth">-</span>
+      </div> -->
+      <div class="col">
+        <span class="price cmc-eth">-</span>
       </div>
     </div>
+
+    <div class="row content-row">
+      <div class="col">
+        <img class="icon "src="img/bch-icon.png" alt="Bitcoin cash">
+        <span class="coin-name">BCH</span>
+      </div>
+      <div class="col">
+        <span class="price bx-bch">-</span>
+      </div>
+      <div class="col">
+        <span class="price bfx-bch">-</span>
+      </div>
+      <div class="col">
+        <span class="price btx-bch">-</span>
+      </div>
+      <div class="col">
+        <span class="price bin-bch">-</span>
+      </div>
+      <div class="col">
+        <span class="price cex-bch">-</span>
+      </div>
+      <!-- <div class="col">
+        <span class="price cb-bch">-</span>
+      </div> -->
+      <div class="col">
+        <span class="price cmc-bch">-</span>
+      </div>
+    </div>  
 
     <div class="row content-row">
       <div class="col">
@@ -130,8 +144,11 @@
       <div class="col">
         <span class="price cex-omg">-</span>
       </div>
-      <div class="col">
+      <!-- <div class="col">
         <span class="price cb-omg">-</span>
+      </div> -->
+      <div class="col">
+        <span class="price cmc-omg">-</span>
       </div>
     </div>
 
@@ -155,8 +172,11 @@
       <div class="col">
         <span class="price cex-xrp">-</span>
       </div>
-      <div class="col">
+      <!-- <div class="col">
         <span class="price cb-xrp">-</span>
+      </div> -->
+      <div class="col">
+        <span class="price cmc-xrp">-</span>
       </div>
     </div>
 
@@ -180,30 +200,36 @@
       <div class="col">
         <span class="price cex-evx">-</span>
       </div>
-      <div class="col">
+      <!-- <div class="col">
         <span class="price cb-evx">-</span>
+      </div> -->
+      <div class="col">
+        <span class="price cmc-evx">-</span>
       </div>
     </div>
-  </div>
-  
-  <div class="footer">
-    <div class="row align-items-center">
-      <div class="col-4">
-        <div class="col">
-          <span class="price">THB</span>
+
+    <div class="footer">
+      <div class="row align-items-center">
+        <div class="col-4">
+          <div class="col">
+            <span class="price">THB</span>
+          </div>
+        </div>
+        <div class="col-4 donate-btn">
+          <button type="button" class="btn btn-hot text-uppercase" data-toggle="modal" data-target="#donationModal">Donate <i class="fa fa-heart" aria-hidden="true"></i></button>
+        </div>
+        <div class="col-4 online-user">
+          <div class="col">
+            <span class="online">
+            <span class="users">0</span>
+                people online
+            </span>
+          </div>
         </div>
       </div>
-      <div class="col-4 donate-btn">
-        <button type="button" class="btn btn-hot text-uppercase" data-toggle="modal" data-target="#donationModal">Donate <i class="fa fa-heart" aria-hidden="true"></i></button>
-      </div>
-      <div class="col-4 online-user">
-        <span class="online">
-        <span class="users">0</span>
-            people online
-        </span>
-      </div>
     </div>
   </div>
+
 
   <div class="modal fade" id="donationModal" tabindex="-1" role="dialog" aria-labelledby="donationModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

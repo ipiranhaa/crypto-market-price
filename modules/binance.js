@@ -30,8 +30,10 @@ function parser(data) {
       btc2usd = data.price;
     }
     result.last_price = data.price * global.THB;
+    result.last_price_usd = data.price;
   } else {
     result.last_price = (data.price * btc2usd) * global.THB;    
+    result.last_price_usd = data.price * btc2usd;
   }
 
   return result;

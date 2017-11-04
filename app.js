@@ -9,6 +9,7 @@ const coinbase = require('./modules/coinbase.js');
 const cex = require('./modules/cex.js');
 const bittrex = require('./modules/bittrex.js');
 const binance = require('./modules/binance.js');
+const coinmarketcap = require('./modules/coinmarketcap.js');
 const util = require('./modules/utils.js');
 const _ = require('lodash');
 
@@ -19,12 +20,15 @@ let coinbaseCache = [];
 let cexCache = [];
 let bittrexCache = [];
 let binanceCache = [];
+let coinMarketCapCache = [];
+
 let isBxFetched = false;
 let isBfxFetched = false;
 let isCoinbaseFetched = false;
 let isCexFetched = false;
 let isBittrexFetched = false;
 let isBinanceFetched = false;
+let isCoinMarketCapFetched = false;
 
 const server = app.listen(process.env.PORT || 3000, function() {
   console.log('Listening... :3000');
@@ -70,6 +74,10 @@ function sendCache() {
   if (isBinanceFetched) {
     io.emit('binance', binanceCache);        
   }
+
+  if (isCoinMarketCapFetched) {
+    io.emit('coinmarketcap', coinMarketCapCache);        
+  }
 }
 
 util.getCurrency('usd', 'thb', function(value) { 
@@ -101,9 +109,14 @@ util.getCurrency('usd', 'thb', function(value) {
   });
 
   binance.fetch(function(data) {
-    console.log(data)
     isBinanceFetched = true;
     binanceCache = data;
+  });
+
+  coinmarketcap.fetch(function(data) {
+    console.log(data)
+    isCoinMarketCapFetched = true;
+    coinMarketCapCache = data;
   });
 })
 
@@ -152,6 +165,11 @@ setInterval(function(){
   binance.fetch(function(data) {
     binanceCache = data;
     io.emit('binance', data);
+  });
+
+  coinmarketcap.fetch(function(data) {
+    coinMarketCapCache = data;
+    io.emit('coinmarketcap', data);
   });
 }, 20000);
  

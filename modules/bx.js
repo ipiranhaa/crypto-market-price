@@ -18,6 +18,7 @@ function parser(data) {
   return {
     name: data.secondary_currency,
     last_price: data.last_price,
+    last_price_usd: data.last_price / global.THB,
     currency: data.primary_currency,
     change: data.change,
     volume: data.volume_24hours

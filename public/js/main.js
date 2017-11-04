@@ -2,7 +2,8 @@ const socket = io();
 
 function assignHtmlValue(htmlClass, msg) {
   msg.forEach(function(obj) {
-    const price = obj.last_price % 1 !== 0 ? obj.last_price.toFixed(2) : obj.last_price;    
+    const floatPrice = parseFloat(obj.last_price);
+    const price = floatPrice % 1 !== 0 ? floatPrice.toFixed(2) : floatPrice;    
     const className = '.' + htmlClass + '-' + obj.name.toLowerCase();
     if ($(className).text() != price) {
       $(className).fadeOut(function() {
@@ -44,4 +45,9 @@ socket.on('bittrex', function(msg) {
 socket.on('binance', function(msg) {
   // console.log('BINANCE: ', msg);
   assignHtmlValue('bin', msg);  
+});
+
+socket.on('coinmarketcap', function(msg) {
+  // console.log('COINMARKETCAP: ', msg);
+  assignHtmlValue('cmc', msg);  
 });

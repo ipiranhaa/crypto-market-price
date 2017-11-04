@@ -16,6 +16,7 @@ function parser(data) {
   return {
     name: util.nameConverter(data.name),
     last_price: data.last_price * global.THB,
+    last_price_usd: data.last_price,
     currency: 'THB',
     change: null,
     volume: data.volume

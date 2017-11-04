@@ -2,24 +2,25 @@ const request = require('request');
 const _ = require('lodash');
 
 const uri = {
-  fetch: 'https://cex.io/api/tickers/USD'
+  fetch: 'https://api.coinmarketcap.com/v1/ticker/?convert=THB'
 }
-let btc2usd = '';
 
 const filter = [
-  'BTC:USD',  // BTC
-  'ETH:USD',  // ETH
-  'BCH:USD'  // ETH
+  'BTC',
+  'ETH',
+  'OMG',
+  'XRP',
+  'BCH',
+  'EVX'
 ]
 
 function parser(data) {
   return {
-    name: data.name,
-    last_price: data.last * global.THB,
-    last_price_usd: data.last,
-    currency: 'THB',
-    change: null,
-    volume: null
+    name: data.symbol,
+    last_price: data.price_thb,
+    last_price_usd: data.price_usd,
+    change: data.percent_change_24h,
+    volume: data['24h_volume_thb']
   }
 }
 
@@ -29,13 +30,12 @@ function fetch(callback) {
   request(uri.fetch, function (err, resp) {
     if (!err && resp.body[0] !== '<') {
       const data = JSON.parse(resp.body);
-      const coins = _.filter(data.data, function(coin) {
-        return _.indexOf(filter, coin.pair) > -1;
+      const filteredData = _.filter(data, function(coin) {
+        return _.indexOf(filter, coin.symbol) > -1 && coin;
       })
 
-      _.each(coins, function(obj) {
-        obj.name = (obj.pair).split(':')[0];
-        val.push(parser(obj));
+      _.each(filteredData, function(data) {
+        val.push(parser(data));
       })
       
       callback(val);

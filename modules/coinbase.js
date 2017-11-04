@@ -14,6 +14,7 @@ function parser(data) {
   return {
     name: data.base,
     last_price: data.amount * global.THB,
+    last_price_usd: data.amount,
     currency: 'THB',
     change: null,
     volume: null
