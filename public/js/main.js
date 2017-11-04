@@ -51,3 +51,19 @@ socket.on('coinmarketcap', function(msg) {
   // console.log('COINMARKETCAP: ', msg);
   assignHtmlValue('cmc', msg);  
 });
+
+// Notification
+window.configMsg = {
+  hello: 'สวัสดีทุกท่านครับ',
+  donate: 'ท่านสามารถให้กำลังใจผู้พัฒนาได้หลายช่องทาง คลิกปุ่ม Donate ด่านล่างได้เลยครับ'
+}
+
+socket.on('notification', function(msg) {
+  toastr.options.timeOut = 10000;
+  toastr.options.extendedTimeOut = 5000;
+  toastr.info(msg);
+});
+
+window.boardcast = function(msg) {
+  socket.emit('boardcast', msg);
+}

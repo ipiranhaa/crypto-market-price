@@ -30,6 +30,11 @@ let isBittrexFetched = false;
 let isBinanceFetched = false;
 let isCoinMarketCapFetched = false;
 
+const configMsg = {
+  hello: 'สวัสดีครับ',
+  donate: 'ท่านสามารถให้กำลังใจผู้พัฒนาได้หลายช่องทาง คลิกปุ่ม Donate ด่านล่างได้เลยครับ'
+}
+
 const server = app.listen(process.env.PORT || 3000, function() {
   console.log('Listening... :3000');
 });
@@ -37,7 +42,7 @@ const server = app.listen(process.env.PORT || 3000, function() {
 // socket
 const io = require('socket.io').listen(server);
 
-updateOnlineUser = (oper) => {
+function updateOnlineUser(oper) {
   if (oper === '+') {
     onlineUser++;
   } else {
@@ -46,6 +51,13 @@ updateOnlineUser = (oper) => {
   
   console.log(onlineUser + ' users online');
   io.emit('online', onlineUser);
+}
+
+function welcomeMsg() {
+  io.emit('notification', configMsg.hello);
+  setTimeout(function() {
+    io.emit('notification', configMsg.donate);
+  }, 4000)
 }
 
 function sendCache() {
@@ -114,7 +126,6 @@ util.getCurrency('usd', 'thb', function(value) {
   });
 
   coinmarketcap.fetch(function(data) {
-    console.log(data)
     isCoinMarketCapFetched = true;
     coinMarketCapCache = data;
   });
@@ -123,10 +134,15 @@ util.getCurrency('usd', 'thb', function(value) {
 io.on('connection', function(socket) {
   sendCache();
   updateOnlineUser('+');
+  welcomeMsg();
 
   socket.on('disconnect', function() {
     updateOnlineUser('-');
   });
+
+  socket.on('boardcast', function(msg) {
+    io.emit('notification', msg);
+  })
 });
 
 setInterval(function(){
@@ -172,6 +188,11 @@ setInterval(function(){
     io.emit('coinmarketcap', data);
   });
 }, 20000);
+
+// Auto notification
+setInterval(function(){
+  welcomeMsg()
+}, 10800000);
  
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
