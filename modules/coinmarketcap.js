@@ -1,9 +1,7 @@
 const request = require('request');
 const _ = require('lodash');
 
-const uri = {
-  fetch: 'https://api.coinmarketcap.com/v1/ticker/?convert=THB'
-}
+const url = 'https://api.coinmarketcap.com/v1/ticker/';
 
 const filter = [
   'BTC',
@@ -11,12 +9,27 @@ const filter = [
   'OMG',
   'XRP',
   'BCH',
-  'EVX'
+  'EVX',
+  'DAS',
+  'LTC',
+  'XZC'
+]
+
+const symbols = [
+  'bitcoin',
+  'ethereum',
+  'omisego',
+  'ripple',
+  'bitcoin-cash',
+  'everex',
+  'dash',
+  'litecoin',
+  'zcoin'
 ]
 
 function parser(data) {
   return {
-    name: data.symbol,
+    name: data.symbol.length > 3 ? (data.symbol).slice(0, 3) : data.symbol,
     last_price: data.price_thb,
     last_price_usd: data.price_usd,
     change: data.percent_change_24h,
@@ -24,27 +37,35 @@ function parser(data) {
   }
 }
 
-function fetch(callback) {
+function get(symbol, callback) {
   callback = callback || function(){};
-  const val = []
-  request(uri.fetch, function (err, resp) {
-    if (!err && resp.body[0] !== '<') {
-      const data = JSON.parse(resp.body);
-      const filteredData = _.filter(data, function(coin) {
-        return _.indexOf(filter, coin.symbol) > -1 && coin;
-      })
-
-      _.each(filteredData, function(data) {
-        val.push(parser(data));
-      })
-      
-      callback(val);
-    } else {
-      console.log('error:', err);
+  const uri = url + symbol + "/?convert=THB";
+  request.get(uri,
+    function(err, resp, body) {
+      if (!err && resp.body[0] !== '<') {
+      body = JSON.parse(body);
+      if (body[0]) {
+        callback(body[0]);
+       }
     }
   });
 }
 
+function fetch(callback) {
+  callback = callback || function(){};
+  const val = [];
+  _.each(symbols, function(symbol, i) {
+    get(symbol, function(data) {
+      if (data) {
+        val.push(parser(data));
+      }
+
+      if (val.length === filter.length) {
+        callback(val);
+      }
+    });
+  })
+}
 
 module.exports = {
   fetch

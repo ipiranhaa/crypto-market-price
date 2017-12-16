@@ -11,7 +11,10 @@ const filter = [
   'OMGBTC',   // OMG
   // 'XRPBTC', // XRP
   'EVXBTC',   // EVX
-  'BCCBTC'    // BCH
+  'BCCBTC',   // BCH
+  'LTCUSDT',  // LTC
+  'DASHBTC',  // DAS
+  'XZCBTC',   // XZC
 ]
 
 function parser(data) {

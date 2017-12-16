@@ -105,10 +105,10 @@ util.getCurrency('usd', 'thb', function(value) {
     bfxCache = data;
   });
 
-  coinbase.fetch(function(data) {
-    isCoinbaseFetched = true;
-    coinbaseCache = data;
-  });
+  // coinbase.fetch(function(data) {
+  //   isCoinbaseFetched = true;
+  //   coinbaseCache = data;
+  // });
 
   cex.fetch(function(data) {
     isCexFetched = true;
@@ -163,10 +163,10 @@ setInterval(function(){
     io.emit('bfx', data);
   });
 
-  coinbase.fetch(function(data) {
-    coinbaseCache = data;
-    io.emit('coinbase', data);  
-  });
+  // coinbase.fetch(function(data) {
+  //   coinbaseCache = data;
+  //   io.emit('coinbase', data);  
+  // });
 
   cex.fetch(function(data) {
     cexCache = data;

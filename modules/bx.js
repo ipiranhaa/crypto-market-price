@@ -12,6 +12,9 @@ const filter = [
   25, // XRP
   27, // BCH
   28, // EVX
+  22, // DAS
+  30, // LTC
+  29, // XZC
 ]
 
 function parser(data) {

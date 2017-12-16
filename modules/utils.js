@@ -40,9 +40,13 @@ function getCurrency(from, to, callback) {
 }
 
 function nameConverter(name) {
-  if (name.toLowerCase() === 'bch' || name.toLowerCase() === 'bcc') {
+  const lowerName = name.toLowerCase();
+  if (lowerName === 'bch' || lowerName === 'bcc') {
     return 'BCH';
+  } else if (lowerName === 'dsh' || lowerName === 'dash') {
+    return 'DAS';
   }
+
   return name;
 }
 

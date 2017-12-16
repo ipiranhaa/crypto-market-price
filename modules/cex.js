@@ -1,5 +1,6 @@
 const request = require('request');
 const _ = require('lodash');
+const util = require('./utils.js');
 
 const uri = {
   fetch: 'https://cex.io/api/tickers/USD'
@@ -9,12 +10,14 @@ let btc2usd = '';
 const filter = [
   'BTC:USD',  // BTC
   'ETH:USD',  // ETH
-  'BCH:USD'  // ETH
+  'BCH:USD',  // BCH
+  'DASH:USD', // DAS
+  'XRP:USD',  // XRP
 ]
 
 function parser(data) {
   return {
-    name: data.name,
+    name: util.nameConverter(data.name),
     last_price: data.last * global.THB,
     last_price_usd: data.last,
     currency: 'THB',

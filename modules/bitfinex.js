@@ -8,7 +8,10 @@ const filter = [
   'ethusd', // ETH
   'omgusd', // OMG
   'xrpusd', // XRP
-  'bchusd'  // BCH
+  'bchusd', // BCH
+  'dshusd', // DAS
+  'ltcusd', // LTC
+  // 'xzcusd' // XZC
 ];
 const currency = 'usd'
 

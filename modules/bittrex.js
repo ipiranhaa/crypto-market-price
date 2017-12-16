@@ -4,11 +4,14 @@ const util = require('./utils.js');
 
 const url = "https://bittrex.com/api/v1.1/public"
 const filter = [
-  'USDT-BTC', // BTC
-  'USDT-ETH', // ETH
-  'USDT-OMG', // OMG
-  'USDT-XRP',  // XRP
-  'USDT-BCC'  // XRP
+  'USDT-BTC',   // BTC
+  'USDT-ETH',   // ETH
+  'USDT-OMG',   // OMG
+  'USDT-XRP',   // XRP
+  'USDT-BCC',   // BCH
+  'USDT-DASH',  // DAS
+  'USDT-LTC',   // LTC
+  // 'USDT-XZC',   // XZC
 ];
 const currency = 'usd'
 

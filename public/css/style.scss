@@ -1,6 +1,8 @@
 $tab_color: #3c3c3c;
 $background: #252526;
 $font: #fff;
+$headerHeight: 6vw;
+$footerHeight: 6vw;
 
 body, html {
   font-family: 'Open Sans', sans-serif;
@@ -18,12 +20,18 @@ body, html {
 }
 
 .header {
-  height: 6vw;
+  height: $headerHeight;
   background-color: #3c3c3c;
 
   .title {
     font-size: 2vw;    
   }
+}
+
+.content-container {
+  height: 77vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 span.price {
@@ -38,6 +46,7 @@ div.content {
 
 span.coin-name {
   font-size: 2vw;
+  vertical-align: middle;
 }
 
 img.icon {
@@ -50,7 +59,7 @@ img.icon {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 6vw;
+  height: $footerHeight;
   line-height: 6vw;
   background-color: $tab_color;
   padding: 0;
@@ -94,7 +103,7 @@ span.online {
   height: 6vw;
 
   .col {
-    line-height: 10vw;
+    line-height: 7vw;
     vertical-align: middle;
   }
 
