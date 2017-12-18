@@ -67,3 +67,12 @@ socket.on('notification', function(msg) {
 window.boardcast = function(msg) {
   socket.emit('boardcast', msg);
 }
+
+// Google Analytic
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+  dataLayer.push(arguments);
+}
+gtag('js', new Date());
+
+gtag('config', 'UA-111347586-1');
