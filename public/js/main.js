@@ -52,6 +52,9 @@ socket.on('coinmarketcap', function(msg) {
   assignHtmlValue('cmc', msg);  
 });
 
+// Trigger line group contact
+$('#line-contact').modal({show: true});
+
 // Notification
 window.configMsg = {
   hello: 'สวัสดีทุกท่านครับ',
