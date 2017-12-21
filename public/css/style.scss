@@ -80,8 +80,14 @@ img.icon {
   @media only screen 
     and (min-device-width : 375px) 
     and (max-device-width : 667px) {
-      .col {
+      .col-4 {
+        padding: 0;
         line-height: 4vw;
+      }
+
+      .btn-hot, .btn-contact-us {
+        padding: 0 !important;
+        width: 50px;
       }
   }
 }
