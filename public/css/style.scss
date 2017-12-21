@@ -24,7 +24,12 @@ body, html {
   background-color: #3c3c3c;
 
   .title {
-    font-size: 2vw;    
+    font-size: 2vw; 
+
+    a {
+      color: $font;
+      text-decoration: none;
+    }   
   }
 }
 
@@ -228,6 +233,17 @@ span.online {
       font-size: 8px;
       padding: 0px 12px;
     }
+  }
+}
+
+// true wallet button
+.true-wallet-btn {
+  background-color: #f78604;
+  color: $font;
+  margin-bottom: 10px;
+  &:hover {
+    background-color: #ff9900;
+    color: $font;
   }
 }
 
