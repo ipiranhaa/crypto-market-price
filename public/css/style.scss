@@ -1,8 +1,8 @@
 $tab_color: #3c3c3c;
 $background: #252526;
 $font: #fff;
-$headerHeight: 6vw;
-$footerHeight: 6vw;
+$headerHeight: 5vw;
+$footerHeight: 5vw;
 
 body, html {
   font-family: 'Open Sans', sans-serif;
@@ -21,6 +21,7 @@ body, html {
 
 .header {
   height: $headerHeight;
+  line-height: $headerHeight;
   background-color: #3c3c3c;
 
   .title {
@@ -34,7 +35,7 @@ body, html {
 }
 
 .content-container {
-  height: 77vh;
+  height: 80vh;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -65,7 +66,7 @@ img.icon {
   bottom: 0;
   left: 0;
   height: $footerHeight;
-  line-height: 6vw;
+  line-height: $footerHeight;
   background-color: $tab_color;
   padding: 0;
 
@@ -85,9 +86,11 @@ img.icon {
         line-height: 4vw;
       }
 
-      .btn-hot, .btn-contact-us {
+      .btn-donate, .btn-contact-us {
         padding: 0 !important;
         width: 50px;
+        height: 12px !important;
+        line-height: 10px !important;
       }
   }
 }
@@ -111,10 +114,10 @@ span.online {
 }
 
 .content-row {
-  height: 6vw;
+  height: 5vw;
+  line-height: 5vw;
 
   .col {
-    line-height: 7vw;
     vertical-align: middle;
   }
 
