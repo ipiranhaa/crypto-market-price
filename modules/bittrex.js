@@ -34,6 +34,9 @@ function get(symbol, callback) {
       if (!err && resp.body[0] !== '<') {
       body = JSON.parse(body);
       if (body.success) {
+        if (!body.result) {
+          body.result = {};
+        }
         body.result.name = symbol.split('USDT-')[1];
         callback(body.result)
        }
