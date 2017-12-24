@@ -1,4 +1,13 @@
+# Created by git-ignore
+.DS_Store
+
+# Dependency directory
 node_modules
+
+# Editor setting
+.vscode
+
+# Compliled files
 .sass-cache
 public/css/style.min.css
 public/css/style.css
