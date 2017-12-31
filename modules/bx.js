@@ -18,6 +18,7 @@ const filter = [
 ]
 
 function parser(data) {
+  if (!data) return {};
   return {
     name: data.secondary_currency,
     last_price: data.last_price,

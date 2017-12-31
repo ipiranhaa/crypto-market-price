@@ -18,6 +18,7 @@ const filter = [
 ]
 
 function parser(data) {
+  if (!data) return {};
   const result = {
     last_price: data.price,
     currency: 'THB',
