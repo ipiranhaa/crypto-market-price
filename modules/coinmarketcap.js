@@ -28,7 +28,7 @@ const symbols = [
 ]
 
 function parser(data) {
-  if (!data) return {};
+  if (!data) return global.schema;
   return {
     name: data.symbol.length > 3 ? (data.symbol).slice(0, 3) : data.symbol,
     last_price: data.price_thb,

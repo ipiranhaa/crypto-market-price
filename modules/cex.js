@@ -16,7 +16,7 @@ const filter = [
 ]
 
 function parser(data) {
-  if (!data) return {};
+  if (!data) return global.schema;
   return {
     name: util.nameConverter(data.name),
     last_price: data.last * global.THB,

@@ -4,16 +4,16 @@ function assignHtmlValue(htmlClass, msg) {
   msg.forEach(function(obj) {
     const floatPrice = parseFloat(obj.last_price);
     const price = floatPrice % 1 !== 0 ? floatPrice.toFixed(2) : floatPrice;    
-    const className = '.price.' + htmlClass + '-' + obj.name.toLowerCase();
-    if (price && price !== 'NaN' && $(className).text() != price) {
+    const className = obj.name ? '.price.' + htmlClass + '-' + obj.name.toLowerCase() : null;
+    if (price && price !== 'NaN' && className && $(className).text() != price) {
       $(className).fadeOut(function() {
         $(this).text(price);
       }).fadeIn();
     }
     
     const percent = parseFloat(obj.change).toFixed(2);
-    const changeClassName = '.change.' + htmlClass + '-' + obj.name.toLowerCase();
-    if (percent && percent !== 'NaN' && $(changeClassName).text() != percent) {
+    const changeClassName = obj.name ? '.change.' + htmlClass + '-' + obj.name.toLowerCase() : null;
+    if (percent && percent !== 'NaN' && changeClassName && $(changeClassName).text() != percent) {
       $(changeClassName).fadeOut(function() {
         $(this).removeClass('plus');
         $(this).removeClass('minus');

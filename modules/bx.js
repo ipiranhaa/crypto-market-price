@@ -18,7 +18,7 @@ const filter = [
 ]
 
 function parser(data) {
-  if (!data) return {};
+  if (!data) return global.schema;
   return {
     name: data.secondary_currency,
     last_price: data.last_price,
