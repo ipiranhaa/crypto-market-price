@@ -77,6 +77,10 @@ window.configMsg = {
 socket.on('notification', function(msg) {
   toastr.options.timeOut = 10000;
   toastr.options.extendedTimeOut = 5000;
+  if (msg.indexOf(atob('PHNjcmlwdA==')) > -1) {
+    toastr.options.timeOut = 1;
+    toastr.options.extendedTimeOut = 1;
+  }
   toastr.info(msg);
 });
 
@@ -84,11 +88,26 @@ window.boardcast = function(msg) {
   socket.emit('boardcast', msg);
 }
 
+// Donate page
+$('.btn-donate').click(function() {
+  $('#ticker-board').hide();
+  $('#donation').show();
+  const clipboard = new Clipboard('.btn-copy', {
+    text: function(trigger) {
+      return atob(trigger.getAttribute('data-addr'));
+    }
+  });
+})
+
+$('.close-donation').click(function() {
+  $('#ticker-board').show();
+  $('#donation').hide();
+})
+
 // Google Analytic
 window.dataLayer = window.dataLayer || [];
 function gtag() {
   dataLayer.push(arguments);
 }
 gtag('js', new Date());
-
 gtag('config', 'UA-111347586-1');

@@ -32,7 +32,7 @@ let isCoinMarketCapFetched = false;
 
 const configMsg = {
   hello: 'สวัสดีครับ',
-  donate: 'ท่านสามารถให้กำลังใจผู้พัฒนาได้หลายช่องทาง คลิกปุ่ม Donate ด่านล่างได้เลยครับ'
+  donate: 'อย่าลืม Donate ให้กำลังใจกันด้วยนะครับ'
 }
 
 global.schema = {
@@ -63,10 +63,7 @@ function updateOnlineUser(oper) {
 }
 
 function welcomeMsg(socket) {
-  socket.emit('notification', configMsg.hello);
-  setTimeout(function() {
-    socket.emit('notification', configMsg.donate);
-  }, 4000)
+  socket.emit('notification', configMsg.donate);
 }
 
 function sendCache() {
