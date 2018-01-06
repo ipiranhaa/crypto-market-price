@@ -9,7 +9,7 @@ const filter = [
   'BTCUSDT',  // BTC
   'ETHUSDT',  // ETH
   'OMGBTC',   // OMG
-  // 'XRPBTC', // XRP
+  'XRPBTC',   // XRP
   'EVXBTC',   // EVX
   'BCCBTC',   // BCH
   'LTCUSDT',  // LTC
