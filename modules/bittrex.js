@@ -1,6 +1,7 @@
 const request = require('request');
 const _ = require('lodash');
 const util = require('./utils.js');
+const Model = require('./model.js');
 
 const url = "https://bittrex.com/api/v1.1/public"
 const filter = [
@@ -16,15 +17,14 @@ const filter = [
 const currency = 'usd'
 
 function parser(data) {
-  if (!data) return global.schema;
-  return {
-    name: util.nameConverter(data.name),
-    last_price: data.Last * global.THB,
-    last_price_usd: data.Last,
-    currency: 'THB',
-    change: null,
-    volume: null
-  }
+  const result = new Model();
+  if (!data) return result;
+
+  result.name = util.nameConverter(data.name);
+  result.last_price = data.Last * global.THB;
+  result.last_price_usd = data.Last;
+
+  return result;
 }
 
 function get(symbol, callback) {

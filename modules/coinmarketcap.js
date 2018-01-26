@@ -1,5 +1,6 @@
 const request = require('request');
 const _ = require('lodash');
+const Model = require('./model.js');
 
 const url = 'https://api.coinmarketcap.com/v1/ticker/';
 
@@ -28,14 +29,16 @@ const symbols = [
 ]
 
 function parser(data) {
-  if (!data) return global.schema;
-  return {
-    name: data.symbol.length > 3 ? (data.symbol).slice(0, 3) : data.symbol,
-    last_price: data.price_thb,
-    last_price_usd: data.price_usd,
-    change: data.percent_change_24h,
-    volume: data['24h_volume_thb']
-  }
+  const result = new Model();
+  if (!data) return result;
+
+  result.name = data.symbol.length > 3 ? (data.symbol).slice(0, 3) : data.symbol;
+  result.last_price = data.price_thb;
+  result.last_price_usd = data.price_usd;
+  result.volume = data['24h_volume_thb'];
+  result.change = data.percent_change_24h;
+
+  return result;
 }
 
 function get(symbol, callback) {

@@ -1,5 +1,6 @@
 const request = require('request');
 const _ = require('lodash');
+const Model = require('./model.js');
 
 const uri = {
   fetch: 'https://bx.in.th/api/'
@@ -18,15 +19,16 @@ const filter = [
 ]
 
 function parser(data) {
-  if (!data) return global.schema;
-  return {
-    name: data.secondary_currency,
-    last_price: data.last_price,
-    last_price_usd: data.last_price / global.THB,
-    currency: data.primary_currency,
-    change: data.change,
-    volume: data.volume_24hours
-  }
+  const result = new Model();
+  if (!data) return result;
+
+  result.name = data.secondary_currency;
+  result.last_price = data.last_price;
+  result.last_price_usd = data.last_price / global.THB;
+  result.volume = data.volume_24hours;
+  result.change = data.change;
+
+  return result;
 }
 
 function fetch(callback) {

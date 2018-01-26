@@ -1,6 +1,7 @@
 const request = require('request');
 const _ = require('lodash');
 const util = require('./utils.js');
+const Model = require('./model.js');
 
 const url = 'https://www.binance.com/api/v1';
 let btc2usd = '';
@@ -18,13 +19,8 @@ const filter = [
 ]
 
 function parser(data) {
-  if (!data) return global.schema;
-  const result = {
-    last_price: data.price,
-    currency: 'THB',
-    change: null,
-    volume: null
-  }
+  const result = new Model();
+  if (!data) return result;
 
   const srcCurrency = (data.symbol).slice(3);
   result.name = util.nameConverter((data.symbol).slice(0, 3));

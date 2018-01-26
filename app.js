@@ -35,15 +35,6 @@ const configMsg = {
   donate: 'อย่าลืม Donate ให้กำลังใจกันด้วยนะครับ'
 }
 
-global.schema = {
-  name: null,
-  last_price: null,
-  last_price_usd: null,
-  currency: null,
-  change: null,
-  volume: null
-}
-
 const server = app.listen(process.env.PORT || 3000, function() {
   console.log('Listening... :3000');
 });

@@ -1,6 +1,7 @@
 const request = require('request');
 const _ = require('lodash');
 const util = require('./utils.js');
+const Model = require('./model.js');
 
 const url = "https://api.bitfinex.com/v1"
 const filter = [
@@ -16,15 +17,15 @@ const filter = [
 const currency = 'usd'
 
 function parser(data) {
-  if (!data) return global.schema;
-  return {
-    name: util.nameConverter(data.name),
-    last_price: data.last_price * global.THB,
-    last_price_usd: data.last_price,
-    currency: 'THB',
-    change: null,
-    volume: data.volume
-  }
+  const result = new Model();
+  if (!data) return result;
+
+  result.name = util.nameConverter(data.name);
+  result.last_price = data.last_price * global.THB;
+  result.last_price_usd = data.last_price;
+  result.volume = data.volume;
+
+  return result;
 }
 
 function get(symbol, callback) {

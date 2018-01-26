@@ -1,5 +1,6 @@
 const request = require('request');
 const _ = require('lodash');
+const Model = require('./model.js');
 
 const url = "https://api.coinbase.com/v2"
 const filter = [
@@ -11,15 +12,14 @@ const filter = [
 const currency = 'usd'
 
 function parser(data) {
-  if (!data) return global.schema;
-  return {
-    name: data.base,
-    last_price: data.amount * global.THB,
-    last_price_usd: data.amount,
-    currency: 'THB',
-    change: null,
-    volume: null
-  }
+  const result = new Model();
+  if (!data) return result;
+
+  result.name = data.base;
+  result.last_price = data.amount * global.THB;
+  result.last_price_usd = data.amount;
+
+  return result;
 }
 
 function get(symbol, callback) {

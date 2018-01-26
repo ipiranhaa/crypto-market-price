@@ -1,6 +1,7 @@
 const request = require('request');
 const _ = require('lodash');
 const util = require('./utils.js');
+const Model = require('./model.js');
 
 const uri = {
   fetch: 'https://cex.io/api/tickers/USD'
@@ -16,15 +17,14 @@ const filter = [
 ]
 
 function parser(data) {
-  if (!data) return global.schema;
-  return {
-    name: util.nameConverter(data.name),
-    last_price: data.last * global.THB,
-    last_price_usd: data.last,
-    currency: 'THB',
-    change: null,
-    volume: null
-  }
+  const result = new Model();
+  if (!data) return result;
+
+  result.name = util.nameConverter(data.name);
+  result.last_price = data.last * global.THB;
+  result.last_price_usd = data.last;
+
+  return result;
 }
 
 function fetch(callback) {
