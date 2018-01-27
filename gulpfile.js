@@ -30,7 +30,7 @@ gulp.task('compress', function(cb) {
   var options = {};
   pump([
     gulp.src('public/js/*.js'),
-    babel({presets: ['env']}),
+    babel(),
     minify(options),
     gulp.dest('public/build/dist')
   ], cb);

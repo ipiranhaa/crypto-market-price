@@ -59,12 +59,10 @@ function welcomeMsg(socket) {
 
 function sendCache() {
   if (isBxFetched) {
-    // console.log('send bx cache');
     io.emit('bx', bxCache);        
   }
 
   if (isBfxFetched) {
-    // console.log('send bfx cache');
     io.emit('bfx', bfxCache);        
   }
 

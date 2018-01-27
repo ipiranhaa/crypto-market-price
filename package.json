@@ -30,5 +30,8 @@
     "start": "node app.js",
     "build": "gulp build",
     "dev": "gulp dev"
-  }
+  },
+  "babel": {
+    "presets": ["env"]
+  } 
 }

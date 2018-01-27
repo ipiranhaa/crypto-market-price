@@ -1,8 +1,37 @@
 const socket = io();
+let selectedCurrency = 'thb';
+
+// Todo: revise models
+const exchangesNames = ['bx', 'bfx', 'cb', 'btx', 'bin', 'cex', 'cmc'];
+const collection = {};
+exchangesNames.reduce((prev, curr) => {
+  const defaultModel = {
+    name: null,
+    last_price: null,
+    last_price_usd: null,
+    currency: null,
+    change: null,
+    volume: null
+  }
+
+  prev[curr] = {
+    'BTC': JSON.parse(JSON.stringify(defaultModel)),
+    'ETH': JSON.parse(JSON.stringify(defaultModel)),
+    'OMG': JSON.parse(JSON.stringify(defaultModel)),
+    'XRP': JSON.parse(JSON.stringify(defaultModel)), 
+    'BCH': JSON.parse(JSON.stringify(defaultModel)), 
+    'EVX': JSON.parse(JSON.stringify(defaultModel)), 
+    'DAS': JSON.parse(JSON.stringify(defaultModel)), 
+    'LTC': JSON.parse(JSON.stringify(defaultModel)), 
+    'XZC': JSON.parse(JSON.stringify(defaultModel))
+  }
+  
+  return prev;
+}, collection)
 
 function assignHtmlValue(htmlClass, msg) {
   msg.forEach(function(obj) {
-    const floatPrice = parseFloat(obj.last_price);
+    const floatPrice = selectedCurrency === 'thb' ? parseFloat(obj.last_price) : parseFloat(obj.last_price_usd);
     const price = floatPrice % 1 !== 0 ? floatPrice.toFixed(2) : floatPrice;    
     const className = obj.name ? '.price.' + htmlClass + '-' + obj.name.toLowerCase() : null;
     if (price && price !== 'NaN' && className && $(className).text() != price) {
@@ -34,38 +63,59 @@ socket.on('online', function(msg) {
 });
 
 socket.on('bx', function(msg) {
-  // console.log('BX: ', msg);
   assignHtmlValue('bx', msg);
+  
+  msg.forEach(coin => {
+    Object.assign(collection.bx[coin.name], coin);
+  })
 });
 
 socket.on('bfx', function(msg) {
-  // console.log('BFX: ', msg);
-  assignHtmlValue('bfx', msg);  
+  assignHtmlValue('bfx', msg);
+  
+  msg.forEach(coin => {
+    Object.assign(collection.bfx[coin.name], coin);
+  })
 });
 
 socket.on('coinbase', function(msg) {
-  // console.log('COINBASE: ', msg);
   assignHtmlValue('cb', msg);  
+
+  msg.forEach(coin => {
+    Object.assign(collection.cb[coin.name], coin);
+  })
 });
 
 socket.on('cex', function(msg) {
-  // console.log('CEX: ', msg);
-  assignHtmlValue('cex', msg);  
+  assignHtmlValue('cex', msg); 
+  
+  msg.forEach(coin => {
+    Object.assign(collection.cex[coin.name], coin);
+  })
 });
 
 socket.on('bittrex', function(msg) {
-  // console.log('BITTREX: ', msg);
   assignHtmlValue('btx', msg);  
+
+  msg.forEach(coin => {
+    Object.assign(collection.btx[coin.name], coin);
+  })
 });
 
 socket.on('binance', function(msg) {
-  // console.log('BINANCE: ', msg);
   assignHtmlValue('bin', msg);  
+
+  msg.forEach(coin => {
+    Object.assign(collection.bin[coin.name], coin);
+  })
 });
 
 socket.on('coinmarketcap', function(msg) {
-  // console.log('COINMARKETCAP: ', msg);
   assignHtmlValue('cmc', msg);  
+
+  msg.forEach(coin => {
+    Object.assign(collection.cmc[coin.name], coin);
+  })
 });
 
 // Notification
@@ -87,6 +137,38 @@ socket.on('notification', function(msg) {
 window.boardcast = function(msg) {
   socket.emit('boardcast', msg);
 }
+
+// Switch Currency
+const forceSwitchCurrency = currency => {
+  const coinNames = ['btc', 'eth', 'bch', 'omg', 'xrp', 'evx', 'das', 'ltc', 'xzc'];
+  
+  exchangesNames.forEach(excName => {
+    coinNames.forEach(coinName => {
+      let floatPrice = null;
+      if (currency === 'thb') {
+        floatPrice = parseFloat(collection[excName][coinName.toUpperCase()].last_price);
+      } else if (currency === 'usd') {
+        floatPrice = parseFloat(collection[excName][coinName.toUpperCase()].last_price_usd);
+      }
+      let price = floatPrice % 1 !== 0 ? floatPrice.toFixed(2) : floatPrice;
+      if (price === 'NaN') price = '-';
+      $('span.price.' + excName + '-' + coinName).html(price); 
+    })
+  })
+}
+$('.btn-currency').click(function() {
+  console.log(this);
+  if (!$(this).hasClass('active')) {
+    $(this).find('.currency-label').html('USD');
+    selectedCurrency = 'usd';
+    forceSwitchCurrency(selectedCurrency);
+  } else {
+    $(this).find('.currency-label').html('THB');
+    selectedCurrency = 'thb';
+    forceSwitchCurrency(selectedCurrency);
+  }
+  console.log(selectedCurrency)
+});
 
 // Donate page
 $('.btn-donate').click(function() {
