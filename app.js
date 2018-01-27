@@ -32,7 +32,8 @@ let isCoinMarketCapFetched = false;
 
 const configMsg = {
   hello: 'สวัสดีครับ',
-  donate: 'อย่าลืม Donate ให้กำลังใจกันด้วยนะครับ'
+  donate: 'อย่าลืม Donate ให้กำลังใจกันด้วยนะครับ',
+  topDonator: 'ดวงกมล: ฿500 THB'
 }
 
 const server = app.listen(process.env.PORT || 3000, function() {
@@ -55,6 +56,10 @@ function updateOnlineUser(oper) {
 
 function welcomeMsg(socket) {
   socket.emit('notification', configMsg.donate);
+}
+
+function topDonator(socket) {
+  socket.emit('topDonator', configMsg.topDonator);
 }
 
 function sendCache() {
@@ -129,7 +134,8 @@ util.getCurrency('usd', 'thb', function(value) {
 io.on('connection', function(socket) {
   sendCache();
   updateOnlineUser('+');
-  welcomeMsg(socket);
+  // welcomeMsg(socket);
+  topDonator(socket);
 
   socket.on('disconnect', function() {
     updateOnlineUser('-');

@@ -134,6 +134,27 @@ socket.on('notification', function(msg) {
   toastr.info(msg);
 });
 
+socket.on('topDonator', function(msg) {
+  toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": true,
+    "positionClass": "toast-top-center",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "10000",
+    "extendedTimeOut": "5000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+  }
+  toastr.success(msg, "TOP DONATOR");
+});
+
 window.boardcast = function(msg) {
   socket.emit('boardcast', msg);
 }
