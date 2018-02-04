@@ -178,7 +178,6 @@ const forceSwitchCurrency = currency => {
   })
 }
 $('.btn-currency').click(function() {
-  console.log(this);
   if (!$(this).hasClass('active')) {
     $(this).find('.currency-label').html('USD');
     selectedCurrency = 'usd';
@@ -188,7 +187,6 @@ $('.btn-currency').click(function() {
     selectedCurrency = 'thb';
     forceSwitchCurrency(selectedCurrency);
   }
-  console.log(selectedCurrency)
 });
 
 // Donate page
