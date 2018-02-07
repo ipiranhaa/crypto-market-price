@@ -57,7 +57,7 @@ body, html {
 }
 
 .content-container {
-  height: 80vh;
+  height: 74vh;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -235,7 +235,7 @@ div.modal {
 }
 
 // Donate Page
-div#donation {
+div#donation-board {
   color: $background;
   padding: 2vh 2vw;
   overflow-y: auto;

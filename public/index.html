@@ -23,26 +23,26 @@
 </head>
 <body>
   <nav class="navbar navbar-toggleable-md navbar-inverse">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand mb-0" href="#">
       <img src="img/logo.gif" width="50" class="d-inline-block" alt="">
       Coins Comparator
     </a>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <div class="collapse navbar-collapse" id="navbarToggler">
       <ul class="navbar-nav mr-auto mt-2 mt-md-0">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Price Compare</a>
+          <a class="nav-link" id="price-compare-btn" href="#">Price Compare</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Arbitrage Compare</a>
+          <a class="nav-link" id="arbitrage-compare-btn" href="#" >Arbitrage Compare</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Donate <i class="fa fa-heart" aria-hidden="true"></i></a>
+          <a class="nav-link" id="donate-btn" href="#">Donate <i class="fa fa-heart" aria-hidden="true"></i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
+          <a class="nav-link" id="contact-btn" href="#" data-toggle="modal" data-target="#line-contact">Contact</a>
         </li>
       </ul>
     </div>
@@ -416,12 +416,7 @@
           </button>
         </div>
         <div class="col-4 btn-container">
-          <button type="button" class="btn btn-hot btn-donate text-uppercase">
-            Donate <i class="fa fa-heart" aria-hidden="true"></i>
-          </button>
-          <button type="button" class="btn btn-secondary btn-contact-us text-uppercase" data-toggle="modal" data-target="#line-contact">
-            Contact
-          </button>
+         
         </div>
         <div class="col-4 online-user">
             <span class="online">
@@ -433,12 +428,8 @@
     </div>
   </div>
 
-  <div class="full-container" id="donation" style="display: none;">
+  <div class="full-container" id="donation-board" style="display: none;">
     <div class="container">
-      <button type="button" class="close close-donation" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-
       <h2>Thanks for support</h2>
       <div class="row">
         <div class="col-12 text-center donate-btn-group">
@@ -540,6 +531,12 @@
     </div>    
   </div>
 
+  <div class="full-container" id="arbitrage-board" style="display: none;">
+    <div class="container">
+      <h2 style="text-align: center;margin-top: 20%">Coming soon</h2>
+    </div>
+  </div>
+
   <div class="modal fade" id="line-contact" tabindex="-1" role="dialog" aria-labelledby="lineContactModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -551,7 +548,7 @@
         </div>
         <div class="modal-body">
           <div class="col-12">
-            <img src="img/line-square.jpg" style="display: block; margin: 0 auto; width: 30vw;">          
+            <img src="img/line-square.jpg" style="display: block; margin: 0 auto; width: 30vh;">          
           </div>
           <div class="col-12">
             <a href="https://line.me/ti/g2/JKCZX8U4L4" class="btn btn-success" target="_blank" style="display: block; margin-top: 10px;">Join</a>
@@ -567,6 +564,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>

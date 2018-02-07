@@ -189,20 +189,29 @@ $('.btn-currency').click(function() {
   }
 });
 
-// Donate page
-$('.btn-donate').click(function() {
-  $('#ticker-board').hide();
-  $('#donation').show();
+// Navbar management
+$('.navbar-nav > li > a').on('click', function(){
+  $('.navbar-collapse').collapse('hide');
+});
+
+$('#donate-btn').click(e => {
+  selectNavbarMenu(e.target.id);
+  showPage('donation-board');
   const clipboard = new Clipboard('.btn-copy', {
-    text: function(trigger) {
+    text: trigger => {
       return atob(trigger.getAttribute('data-addr'));
     }
   });
 })
 
-$('.close-donation').click(function() {
-  $('#ticker-board').show();
-  $('#donation').hide();
+$('#price-compare-btn').click(e => {
+  selectNavbarMenu(e.target.id);
+  showPage('ticker-board');
+})
+
+$('#arbitrage-compare-btn').click(e => {
+  selectNavbarMenu(e.target.id);
+  showPage('arbitrage-board');
 })
 
 // Google Analytic
@@ -212,3 +221,20 @@ function gtag() {
 }
 gtag('js', new Date());
 gtag('config', 'UA-111347586-1');
+
+// Utils
+const selectNavbarMenu = elemId => {
+  $('.navbar .nav-item').removeClass('active');
+  $('#' + elemId).parent().addClass('active');
+}
+
+const showPage = pageId => {
+  const pageList =['ticker-board', 'arbitrage-board', 'donation-board'];
+  pageList.forEach(id => {
+    if (id !== pageId) {
+      $('#' + id).hide();
+    } else {
+      $('#' + id).show();
+    }
+  })
+}
