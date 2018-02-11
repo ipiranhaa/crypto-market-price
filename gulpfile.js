@@ -9,22 +9,40 @@ var concat = require('gulp-concat');
 var clean = require('gulp-clean');
 var gulpSequence = require('gulp-sequence');
 var babel = require('gulp-babel');
+var browserSync = require('browser-sync').create();
 
 gulp.task('default', ['sass'], function() {
   gulp.watch("public/css/*.scss", ['sass']);
 });
 
-gulp.task('build', gulpSequence('compress', 'merge', 'clean', 'sass'));
-gulp.task('dev', ['sass'], function() {
+gulp.task('build', function(cb) {
+  gulpSequence('compress', 'merge', 'clean', 'sass', 'hotReload')(cb)
+})
+
+gulp.task('dev', ['browserSync', 'build'], function() {
   gulp.watch("public/css/*.scss", ['sass']);
+  gulp.watch("public/js/*.js", ['build']);
 });
  
 gulp.task('sass', function(cb) {
-    pump([
-      sass('public/css/*.scss', {style: 'compressed'}),
-      gulp.dest('public/build')
-    ], cb);
+  pump([
+    sass('public/css/*.scss', {style: 'compressed'}),
+    gulp.dest('public/build'),
+    browserSync.reload({
+      stream: true
+    })
+  ], cb);
 });
+
+gulp.task('browserSync', function() {
+  browserSync.init({
+    proxy: "http://localhost:3000"
+  })
+})
+
+gulp.task('hotReload', function() {
+  browserSync.reload();
+})
 
 gulp.task('compress', function(cb) {
   var options = {};
