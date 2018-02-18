@@ -234,6 +234,14 @@ div.modal {
   }
 }
 
+.form-plus {
+  color: #049372;
+}
+
+.form-minus {
+  color: #c0392b;
+}
+
 // Donate Page
 div#donation-board {
   color: $background;
@@ -302,5 +310,91 @@ div#donation-board {
   }
 }
 
+// Arbitrage Page
+div#arbitrage-board {
+  .card {
+    color: $background;
+    margin-bottom: 4vh; 
 
+    .card-header, .card-block {
+      text-align: center;
+    }
+
+    .card-block {
+      padding-top: 2vh; 
+      padding-bottom: 2vh; 
+    }
+
+    img.icon {
+      width: 20px;
+      height: 20px;
+      vertical-align: sub;
+    }
+  }
+
+  .compare-chart {
+    margin-top: 1.6vh; 
+  }
+
+  .buy-price,
+  .amount,
+  .exchange-name-container, 
+  .percent-container,
+  .profit-container {
+    text-align: right;
+  }
+
+  .unit-container {
+    width: 60px;
+  }
+
+  .order-container {
+    width: 60px;
+  }
+
+  .exchange-name-container {
+    width: 220px;
+  }
+
+  .abt-price-container {
+    margin-top: 1vh;
+
+    .exchange-row {
+      .order-container {
+        border-radius: 5px 0 0 0;
+      } 
+      
+      .percent-container {
+        border-radius: 0 5px 0 0;
+      }
+    }
+    
+    .profit-row {
+      .input-group-addon, .form-control {
+        border-top: 0;
+      }
+
+      .input-group-addon {
+        &:first-child {
+          border-top-left-radius: 0;
+        }
+        &:last-child {
+          border-top-right-radius: 0;
+        }
+      }
+    }
+  }
+
+  @media only screen 
+  and (min-device-width : 375px) 
+  and (max-device-width : 667px) {
+    .order-container {
+      width: 54px;
+    }
+  
+    .exchange-name-container {
+      width: 120px;
+    }
+  }
+}
 

@@ -533,7 +533,86 @@
 
   <div class="full-container" id="arbitrage-board" style="display: none;">
     <div class="container">
-      <h2 style="text-align: center;margin-top: 20%">Coming soon</h2>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 offset-md-2 col-md-8 offset-lg-2 col-lg-8 mt-5">
+          <div class="card">
+            <div class="card-header">
+              <div class="offset-xs-1 col-xs-10 offset-sm-1 col-sm-10 offset-md-3 col-md-6 offset-lg-3 col-lg-6">
+                <select class="form-control form-control-sm" id="abt-select-coins">
+                  <option selected disabled>Select your cryptocurrencies</option>
+                  <option value="BTC">BTC</option>
+                  <option value="ETH">ETH</option>
+                  <option value="OMG">OMG</option>
+                  <option value="XRP">XRP</option>
+                  <option value="BCH">BCH</option>
+                  <option value="EVX">EVX</option>
+                  <option value="DAS">DAS</option>
+                  <option value="LTC">LTC</option>
+                  <option value="XZC">XZC</option>
+                </select>
+            </div>
+          </div>
+            <div class="card-block">
+              <div class="row">
+                <div class="col-12">
+                  <div class="input-group">
+                    <input class="form-control buy-price" id="abt-input" type="number" min="1" placeholder="Buy price (THB)">
+                    <span class="input-group-addon unit-container">THB</span>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="input-group">
+                    <input class="form-control amount" id="abt-amount-input" type="number" min="1" placeholder="Amount">
+                    <span class="input-group-addon unit-container" id="abt-unit">-</span>
+                  </div>
+                </div>
+                <div class="col-12 align-self-center compare-chart">
+                  <div class="abt-price-container">
+                    <div class="input-group exchange-row">
+                      <span class="input-group-addon order-container">1st</span>
+                      <span class="input-group-addon exchange-name-container" id="1st-exchanges">Exchanges name</span>
+                      <input type="text" class="form-control percent-container" id="1st-percent" placeholder="Profit (%)" disabled>
+                    </div>
+                    <div class="input-group profit-row">
+                      <span class="input-group-addon order-container">Total</span>
+                      <input type="text" class="form-control profit-container" id="1st-profit" placeholder="-" disabled>
+                      <span class="input-group-addon order-container">THB</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 align-self-center">
+                  <div class="abt-price-container exchange-row">
+                    <div class="input-group">
+                      <span class="input-group-addon order-container" class="">2nd</span>
+                      <span class="input-group-addon exchange-name-container" id="2nd-exchanges">Exchanges name</span>
+                      <input type="text" class="form-control percent-container" id="2nd-percent" placeholder="Profit (%)" disabled>
+                    </div>
+                    <div class="input-group profit-row">
+                      <span class="input-group-addon order-container">Total</span>
+                      <input type="text" class="form-control profit-container" id="2nd-profit" placeholder="-" disabled>
+                      <span class="input-group-addon order-container">THB</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 align-self-center">
+                  <div class="abt-price-container">
+                    <div class="input-group exchange-row">
+                      <span class="input-group-addon order-container">3rd</span>
+                      <span class="input-group-addon exchange-name-container" id="3rd-exchanges">Exchanges name</span>
+                      <input type="text" class="form-control percent-container" id="3rd-percent" placeholder="Profit (%)" disabled>
+                    </div>
+                    <div class="input-group profit-row">
+                      <span class="input-group-addon order-container">Total</span>
+                      <input type="text" class="form-control profit-container" id="3rd-profit" placeholder="-" disabled>
+                      <span class="input-group-addon order-container">THB</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -567,6 +646,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111347586-1"></script>
   <script src="build/build.js"></script>

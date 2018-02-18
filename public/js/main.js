@@ -58,6 +58,10 @@ function assignHtmlValue(htmlClass, msg) {
   }, this);
 }
 
+//
+// ─── LISTEN SOCKET ──────────────────────────────────────────────────────────────
+//
+
 socket.on('online', function(msg) {
   $('span.users').html(msg);
 });
@@ -118,7 +122,10 @@ socket.on('coinmarketcap', function(msg) {
   })
 });
 
-// Notification
+//
+// ─── NOTIFICATION ───────────────────────────────────────────────────────────────
+//
+  
 window.configMsg = {
   hello: 'สวัสดีทุกท่านครับ',
   donate: 'ท่านสามารถให้กำลังใจผู้พัฒนาได้หลายช่องทาง คลิกปุ่ม Donate ด่านล่างได้เลยครับ'
@@ -159,7 +166,10 @@ window.boardcast = function(msg) {
   socket.emit('boardcast', msg);
 }
 
-// Switch Currency
+//
+// ─── SWITCH CURRENCY ────────────────────────────────────────────────────────────
+//
+
 const forceSwitchCurrency = currency => {
   const coinNames = ['btc', 'eth', 'bch', 'omg', 'xrp', 'evx', 'das', 'ltc', 'xzc'];
   
@@ -189,7 +199,10 @@ $('.btn-currency').click(function() {
   }
 });
 
-// Navbar management
+//
+// ─── NAVBAR MANAGEMENT ──────────────────────────────────────────────────────────
+//
+
 $('.navbar-nav > li > a').on('click', function(){
   $('.navbar-collapse').collapse('hide');
 });
@@ -214,7 +227,155 @@ $('#arbitrage-compare-btn').click(e => {
   showPage('arbitrage-board');
 })
 
-// Google Analytic
+//
+// ─── ARBITRAGE CALC ─────────────────────────────────────────────────────────────
+//
+
+const exchangesFullNames = {
+  'bx': 'BX', 
+  'bfx': 'Bitfinex', 
+  'cb': 'Coinbase', 
+  'btx': 'Bittrex', 
+  'bin': 'Binance', 
+  'cex': 'Cex.io', 
+  'cmc': 'Coinmarketcap'
+}
+
+let selectedCoin;
+let buyPrice = 0;
+let amount = 1 
+const abtCalc = () => {
+  if (!buyPrice || !selectedCoin) return;
+
+  const percentCalc = (buyPrice, exchangePrice) => {
+    return (((exchangePrice - buyPrice) / buyPrice) * 100).toFixed(2);
+  }
+
+  const profitCalc = (percent) => {
+    if (amount && amount !== NaN) {
+      return (((buyPrice * (parseFloat(percent) / 100))) * amount).toFixed(2);
+    }
+    return 'Please fill amount';
+  }
+
+  // Except exchanges
+  let sortingPool = [];
+  _.each(collection, (exchanges, name) => {
+    if (name !== 'cb' && name !== 'cmc') {
+      sortingPool.push({
+        exchange: name,
+        last_price: exchanges[selectedCoin].last_price
+      })
+    }
+  })
+  
+  // Sorting top 3 exchanges
+  sortingPool = _.sortBy(sortingPool, ['last_price']);
+  
+  const top3Pool = [];
+  for (let i = sortingPool.length - 1; i > -1; i--) {
+    if (sortingPool[i]['last_price']) {
+      top3Pool.push(sortingPool[i])
+    }
+
+    if (top3Pool.length === 3) {
+      break;
+    }
+  }
+
+  // Set dom value
+  clearStyle();
+  const firstExchangeName = top3Pool[0] ? exchangesFullNames[top3Pool[0]['exchange']] : '-';
+  $('#1st-exchanges').html(firstExchangeName);
+  const firstPercent = top3Pool[0] ? percentCalc(buyPrice, top3Pool[0]['last_price']) : 'Profit (%)';
+  let firstPrice = top3Pool[0] ? profitCalc(percentCalc(buyPrice, top3Pool[0]['last_price'])) : '-';
+  $('#1st-percent').val(firstPercent + ' %');
+  if (firstPrice < 0) {
+    $('#1st-profit').addClass('form-minus');
+  } else if (firstPrice > 0) {
+    $('#1st-profit').addClass('form-plus');
+  }
+  firstPrice = numberWithCommas(firstPrice);
+  $('#1st-profit').val(firstPrice);
+  
+  const secondExchangeName = top3Pool[1] ? exchangesFullNames[top3Pool[1]['exchange']] : '-';
+  $('#2nd-exchanges').html(secondExchangeName);
+  const secondPercent = top3Pool[1] ? percentCalc(buyPrice, top3Pool[1]['last_price']) : 'Profit (%)';
+  let secondPrice = top3Pool[1] ? profitCalc(percentCalc(buyPrice, top3Pool[1]['last_price'])) : '-';
+  $('#2nd-percent').val(secondPercent + ' %');
+  if (secondPrice < 0) {
+    $('#2nd-profit').addClass('form-minus');
+  } else if (secondPrice > 0) {
+    $('#2nd-profit').addClass('form-plus');
+  }
+  secondPrice = numberWithCommas(secondPrice);
+  $('#2nd-profit').val(secondPrice);
+  
+  const thirdExchangeName = top3Pool[2] ? exchangesFullNames[top3Pool[2]['exchange']] : '-';
+  $('#3rd-exchanges').html(thirdExchangeName);
+  const thirdPercent = top3Pool[2] ? percentCalc(buyPrice, top3Pool[2]['last_price']) : 'Profit (%)';
+  let thirdPrice = top3Pool[2] ? profitCalc(percentCalc(buyPrice, top3Pool[2]['last_price'])) : '-';
+  $('#3rd-percent').val(thirdPercent + ' %')
+  if (thirdPrice < 0) {
+    $('#3rd-profit').addClass('form-minus');
+  } else if (thirdPrice > 0) {
+    $('#3rd-profit').addClass('form-plus');
+  }
+  thirdPrice = numberWithCommas(thirdPrice);
+  $('#3rd-profit').val(thirdPrice);
+}
+
+const clearStyle = () => {
+  $('#1st-profit').removeClass('form-minus');
+  $('#2nd-profit').removeClass('form-minus');
+  $('#3rd-profit').removeClass('form-minus');
+  $('#1st-profit').removeClass('form-plus');
+  $('#2nd-profit').removeClass('form-plus');
+  $('#3rd-profit').removeClass('form-plus');
+}
+
+const clearState = () => {
+  $('#abt-input').val(null);
+  $('#abt-amount-input').val(null);
+  $('#abt-unit').val('-');
+
+  $('#1st-exchanges').html('Exchanges name');
+  $('#1st-percent').val(null);
+  $('#1st-profit').val(null);
+  
+  $('#2nd-exchanges').html('Exchanges name');
+  $('#2nd-percent').val(null);
+  $('#2nd-profit').val(null);
+  
+  $('#3rd-exchanges').html('Exchanges name');
+  $('#3rd-percent').val(null);
+  $('#3rd-profit').val(null);
+}
+
+$('#abt-input').on('keyup change', e => {
+  if (parseFloat(e.target.value) === NaN) return;
+  buyPrice = parseFloat(e.target.value);
+  abtCalc();
+})
+
+$('#abt-amount-input').on('keyup change', e => {
+  if (parseFloat(e.target.value) === NaN) return;
+  amount = parseFloat(e.target.value);
+  abtCalc();
+})
+
+$('#abt-select-coins').on('change', e => {
+  selectedCoin = e.target.value;
+  $('#abt-unit').html(selectedCoin);
+  // Clear all state
+  clearState();
+  clearStyle();
+})
+
+//
+// ─── GOOGLE ANALYTIC ────────────────────────────────────────────────────────────
+//
+  
 window.dataLayer = window.dataLayer || [];
 function gtag() {
   dataLayer.push(arguments);
@@ -222,7 +383,10 @@ function gtag() {
 gtag('js', new Date());
 gtag('config', 'UA-111347586-1');
 
-// Utils
+//
+// ─── UTILS ──────────────────────────────────────────────────────────────────────
+//
+  
 const selectNavbarMenu = elemId => {
   $('.navbar .nav-item').removeClass('active');
   $('#' + elemId).parent().addClass('active');
@@ -237,4 +401,8 @@ const showPage = pageId => {
       $('#' + id).show();
     }
   })
+}
+
+const numberWithCommas = (number) => {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
