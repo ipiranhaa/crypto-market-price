@@ -10,6 +10,7 @@ const cex = require('./modules/cex.js');
 const bittrex = require('./modules/bittrex.js');
 const binance = require('./modules/binance.js');
 const coinmarketcap = require('./modules/coinmarketcap.js');
+const gdax = require('./modules/gdax.js');
 const util = require('./modules/utils.js');
 const _ = require('lodash');
 
@@ -21,6 +22,7 @@ let cexCache = [];
 let bittrexCache = [];
 let binanceCache = [];
 let coinMarketCapCache = [];
+let gdaxCache = [];
 
 let isBxFetched = false;
 let isBfxFetched = false;
@@ -29,6 +31,7 @@ let isCexFetched = false;
 let isBittrexFetched = false;
 let isBinanceFetched = false;
 let isCoinMarketCapFetched = false;
+let isGdaxFetched = false;
 
 const configMsg = {
   hello: 'สวัสดีครับ',
@@ -37,7 +40,7 @@ const configMsg = {
 }
 
 const server = app.listen(process.env.PORT || 3000, function() {
-  console.log('Listening... :3000');
+  console.log('Listening... :' + (process.env.PORT || 3000));
 });
 
 // socket
@@ -90,6 +93,10 @@ function sendCache() {
   if (isCoinMarketCapFetched) {
     io.emit('coinmarketcap', coinMarketCapCache);        
   }
+
+  if (isGdaxFetched) {
+    io.emit('gdax', gdaxCache);
+  }
 }
 
 util.getCurrency('usd', 'thb', function(value) { 
@@ -128,6 +135,11 @@ util.getCurrency('usd', 'thb', function(value) {
   coinmarketcap.fetch(function(data) {
     isCoinMarketCapFetched = true;
     coinMarketCapCache = data;
+  });
+  
+  gdax.fetch(function (data) {
+    isGdaxFetched = true;
+    gdaxCache = data;
   });
 })
 
@@ -187,6 +199,11 @@ setInterval(function(){
   coinmarketcap.fetch(function(data) {
     coinMarketCapCache = data;
     io.emit('coinmarketcap', data);
+  });
+
+  gdax.fetch(function(data) {
+    gdaxCache = data;
+    io.emit('gdax', data);
   });
 }, 20000);
 
