@@ -22,6 +22,7 @@ gulp.task('build', function(cb) {
 gulp.task('dev', ['browserSync', 'build'], function() {
   gulp.watch("public/css/*.scss", ['sass']);
   gulp.watch("public/js/*.js", ['build']);
+  gulp.watch("public/*.html", ['hotReload']);
 });
  
 gulp.task('sass', function(cb) {
