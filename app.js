@@ -112,10 +112,10 @@ util.getCurrency('usd', 'thb', function(value) {
     bfxCache = data;
   });
 
-  // coinbase.fetch(function(data) {
-  //   isCoinbaseFetched = true;
-  //   coinbaseCache = data;
-  // });
+  coinbase.fetch(function(data) {
+    isCoinbaseFetched = true;
+    coinbaseCache = data;
+  });
 
   cex.fetch(function(data) {
     isCexFetched = true;

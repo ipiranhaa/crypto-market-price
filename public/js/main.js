@@ -2,7 +2,7 @@ const socket = io();
 let selectedCurrency = 'thb';
 
 // Todo: revise models
-const exchangesNames = ['bx', 'bfx', 'cb', 'btx', 'bin', 'cex', 'cmc'];
+const exchangesNames = ['bx', 'bfx', 'cb', 'btx', 'bin', 'cex', 'cmc', 'gdax'];
 const collection = {};
 exchangesNames.reduce((prev, curr) => {
   const defaultModel = {
@@ -83,7 +83,7 @@ socket.on('bfx', function(msg) {
 });
 
 socket.on('coinbase', function(msg) {
-  assignHtmlValue('cb', msg);  
+  // assignHtmlValue('cb', msg);  
 
   msg.forEach(coin => {
     Object.assign(collection.cb[coin.name], coin);
@@ -119,6 +119,14 @@ socket.on('coinmarketcap', function(msg) {
 
   msg.forEach(coin => {
     Object.assign(collection.cmc[coin.name], coin);
+  })
+});
+
+socket.on('gdax', function(msg) {
+  // assignHtmlValue('gdax', msg);  
+
+  msg.forEach(coin => {
+    Object.assign(collection.gdax[coin.name], coin);
   })
 });
 
@@ -238,7 +246,8 @@ const exchangesFullNames = {
   'btx': 'Bittrex', 
   'bin': 'Binance', 
   'cex': 'Cex.io', 
-  'cmc': 'Coinmarketcap'
+  'cmc': 'Coinmarketcap',
+  'gdax': 'GDAX'
 }
 
 let selectedCoin;
