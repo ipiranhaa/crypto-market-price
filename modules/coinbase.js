@@ -6,8 +6,8 @@ const url = "https://api.coinbase.com/v2"
 const filter = [
   'btc-usd', // BTC
   'eth-usd', // ETH
-  // 'omg-usd', // OMG
-  // 'xrp-usd'  // XRP
+  'bch-usd', // BCH
+  'ltc-usd'  // LTC
 ];
 const currency = 'usd'
 
