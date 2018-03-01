@@ -39,8 +39,15 @@ const configMsg = {
   topDonator: 'ดวงกมล: ฿500 THB'
 }
 
-const server = app.listen(process.env.PORT || 3000, function() {
-  console.log('Listening... :' + (process.env.PORT || 3000));
+const settings = {
+  servPort: 3000,
+  fetchCurrencyTime: 600000,
+  fetchPriceTime: 20000,
+  noticeTime: 10800000
+}
+
+const server = app.listen(process.env.PORT || settings.servPort, function() {
+  console.log('Listening... :' + (process.env.PORT || settings.servPort));
 });
 
 // socket
@@ -163,7 +170,7 @@ setInterval(function(){
     console.log('1 USD = ' + value + ' THB')
     global.THB = value;
   })
-}, 600000);
+}, settings.fetchCurrencyTime);
 
 setInterval(function(){
   bx.fetch(function(data) {
@@ -176,10 +183,10 @@ setInterval(function(){
     io.emit('bfx', data);
   });
 
-  // coinbase.fetch(function(data) {
-  //   coinbaseCache = data;
-  //   io.emit('coinbase', data);  
-  // });
+  coinbase.fetch(function(data) {
+    coinbaseCache = data;
+    io.emit('coinbase', data);  
+  });
 
   cex.fetch(function(data) {
     cexCache = data;
@@ -205,12 +212,12 @@ setInterval(function(){
     gdaxCache = data;
     io.emit('gdax', data);
   });
-}, 20000);
+}, settings.fetchPriceTime);
 
 // Auto notification
 setInterval(function(){
   welcomeMsg()
-}, 10800000);
+}, settings.noticeTime);
  
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
