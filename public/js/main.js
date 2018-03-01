@@ -235,6 +235,11 @@ $('#arbitrage-compare-btn').click(e => {
   showPage('arbitrage-board');
 })
 
+$('#contact-btn').click(e => {
+  selectNavbarMenu(e.target.id);
+  showPage('contact-board');
+})
+
 //
 // ─── ARBITRAGE CALC ─────────────────────────────────────────────────────────────
 //
@@ -402,7 +407,7 @@ const selectNavbarMenu = elemId => {
 }
 
 const showPage = pageId => {
-  const pageList =['ticker-board', 'arbitrage-board', 'donation-board'];
+  const pageList =['ticker-board', 'arbitrage-board', 'donation-board', 'contact-board'];
   pageList.forEach(id => {
     if (id !== pageId) {
       $('#' + id).hide();

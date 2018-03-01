@@ -257,10 +257,6 @@ div#donation-board {
     }
   }
 
-  .close-donation {
-    color: $font;
-  }
-
   .donate-btn-group {
     padding-top: 2vh;
     padding-bottom: 2vh;
@@ -398,3 +394,13 @@ div#arbitrage-board {
   }
 }
 
+div#contact-board {
+  color: $background;
+  padding: 2vh 2vw;
+  
+  h2 {
+    color: $font;
+    margin: 2vh auto;
+    text-align: center;
+  }
+}

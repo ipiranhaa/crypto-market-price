@@ -42,7 +42,7 @@
           <a class="nav-link" id="donate-btn" href="#">Donate <i class="fa fa-heart" aria-hidden="true"></i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="contact-btn" href="#" data-toggle="modal" data-target="#line-contact">Contact</a>
+          <a class="nav-link" id="contact-btn" href="#">Contact</a>
         </li>
       </ul>
     </div>
@@ -616,28 +616,19 @@
     </div>
   </div>
 
-  <div class="modal fade" id="line-contact" tabindex="-1" role="dialog" aria-labelledby="lineContactModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="lineContactModalLabel">Contact us</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+  <div class="full-container" id="contact-board" style="display: none;">
+    <div class="container">
+      <h2>Contact</h2>
+      <div class="row">
+        <div class="col-8 offset-2">
+          <img src="img/line-square.jpg" style="display: block; margin: 0 auto; width: 100%;"> 
         </div>
-        <div class="modal-body">
-          <div class="col-12">
-            <img src="img/line-square.jpg" style="display: block; margin: 0 auto; width: 30vh;">          
-          </div>
-          <div class="col-12">
-            <a href="https://line.me/ti/g2/JKCZX8U4L4" class="btn btn-success" target="_blank" style="display: block; margin-top: 10px;">Join</a>
-          </div>
+        <div class="clearfix"></div>
+        <div class="col-4 offset-4">
+          <a href="https://line.me/ti/g2/JKCZX8U4L4" class="btn btn-success" target="_blank" style="display: block; margin-top: 10px;">Join</a>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
+      </div>  
+    </div>    
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
