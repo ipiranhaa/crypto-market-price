@@ -39,6 +39,7 @@ body, html {
 .full-container {
   width: 100%;
   height: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 .header {
@@ -308,6 +309,28 @@ div#donation-board {
 
 // Arbitrage Page
 div#arbitrage-board {
+  color: $font;
+  padding: 2vh 2vw;
+  overflow-y: auto;
+  padding-bottom: 10vh;
+
+  .title {
+    text-align: center;
+
+    h2 {
+      margin-top: 2vh;
+    }
+  }
+
+  img.icon {
+    width: 36px;
+    height: 36px;
+    vertical-align: sub;
+  }
+}
+
+// Calulator Page
+div#calculator-board {
   .card {
     color: $background;
     margin-bottom: 4vh; 
@@ -394,6 +417,7 @@ div#arbitrage-board {
   }
 }
 
+// Contact Page
 div#contact-board {
   color: $background;
   padding: 2vh 2vw;

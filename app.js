@@ -215,9 +215,9 @@ setInterval(function(){
 }, settings.fetchPriceTime);
 
 // Auto notification
-setInterval(function(){
-  welcomeMsg()
-}, settings.noticeTime);
+// setInterval(function(){
+//   welcomeMsg(socket)
+// }, settings.noticeTime);
  
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));

@@ -33,16 +33,19 @@
     <div class="collapse navbar-collapse" id="navbarToggler">
       <ul class="navbar-nav mr-auto mt-2 mt-md-0">
         <li class="nav-item active">
-          <a class="nav-link" id="price-compare-btn" href="#">Price Compare</a>
+          <a class="nav-link" id="price-compare-btn" href="#"><i class="fa fa-compass" aria-hidden="true"></i> Price Compare</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="arbitrage-compare-btn" href="#" >Arbitrage Compare</a>
+          <a class="nav-link" id="arbitrage-compare-btn" href="#"><i class="fa fa-list-alt" aria-hidden="true"></i> Arbitrage Compare</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="donate-btn" href="#">Donate <i class="fa fa-heart" aria-hidden="true"></i></a>
+          <a class="nav-link" id="calculator-btn" href="#"><i class="fa fa-calculator" aria-hidden="true"></i> Calculator</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="contact-btn" href="#">Contact</a>
+          <a class="nav-link" id="donate-btn" href="#"><i class="fa fa-heart" aria-hidden="true"></i> Donate</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="contact-btn" href="#"><i class="fa fa-user" aria-hidden="true"></i> Contact</a>
         </li>
       </ul>
     </div>
@@ -534,6 +537,25 @@
   <div class="full-container" id="arbitrage-board" style="display: none;">
     <div class="container">
       <div class="row">
+        <div class="col-12 title btc-title">
+          <h2><img class="icon" src="img/btc-icon.png" alt="Bitcoin"> BTC</h2>
+        </div>
+        <div class="col-12 title eth-title">
+          <h2><img class="icon" src="img/eth-icon.png" alt="Ethereum"> ETH</h2>
+        </div>
+        <div class="col-12 title bch-title">
+          <h2><img class="icon" src="img/bch-icon.png" alt="Bitcoin cash"> BCH</h2>
+        </div>
+        <div class="col-12 title ltc-title">
+          <h2><img class="icon" src="img/ltc-icon.png" alt="Lite Coin"> LTC</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-container" id="calculator-board" style="display: none;">
+    <div class="container">
+      <div class="row">
         <div class="col-xs-12 col-sm-12 offset-md-2 col-md-8 offset-lg-2 col-lg-8 mt-5">
           <div class="card">
             <div class="card-header">
@@ -620,11 +642,11 @@
     <div class="container">
       <h2>Contact</h2>
       <div class="row">
-        <div class="col-8 offset-2">
+        <div class="col-xs-8 offset-xs-2 col-sm-8 offset-sm-2 col-md-4 offset-md-4 col-lg-4 offset-lg-4">
           <img src="img/line-square.jpg" style="display: block; margin: 0 auto; width: 100%;"> 
         </div>
         <div class="clearfix"></div>
-        <div class="col-4 offset-4">
+        <div class="col-xs-8 offset-xs-2 col-sm-8 offset-sm-2 col-md-4 offset-md-4 col-lg-4 offset-lg-4">
           <a href="https://line.me/ti/g2/JKCZX8U4L4" class="btn btn-success" target="_blank" style="display: block; margin-top: 10px;">Join</a>
         </div>
       </div>  

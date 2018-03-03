@@ -3,6 +3,16 @@ let selectedCurrency = 'thb';
 
 // Todo: revise models
 const exchangesNames = ['bx', 'bfx', 'cb', 'btx', 'bin', 'cex', 'cmc', 'gdax'];
+const exchangesFullNames = {
+  'bx': 'BX',
+  'bfx': 'Bitfinex',
+  'cb': 'Coinbase',
+  'btx': 'Bittrex',
+  'bin': 'Binance',
+  'cex': 'Cex.io',
+  'cmc': 'Coinmarketcap',
+  'gdax': 'GDAX'
+}
 const collection = {};
 exchangesNames.reduce((prev, curr) => {
   const defaultModel = {
@@ -235,25 +245,79 @@ $('#arbitrage-compare-btn').click(e => {
   showPage('arbitrage-board');
 })
 
+$('#calculator-btn').click(e => {
+  selectNavbarMenu(e.target.id);
+  showPage('calculator-board');
+})
+
 $('#contact-btn').click(e => {
   selectNavbarMenu(e.target.id);
   showPage('contact-board');
 })
 
 //
-// ─── ARBITRAGE CALC ─────────────────────────────────────────────────────────────
+// ─── ARBITAGE COMPARE ───────────────────────────────────────────────────────────
 //
 
-const exchangesFullNames = {
-  'bx': 'BX', 
-  'bfx': 'Bitfinex', 
-  'cb': 'Coinbase', 
-  'btx': 'Bittrex', 
-  'bin': 'Binance', 
-  'cex': 'Cex.io', 
-  'cmc': 'Coinmarketcap',
-  'gdax': 'GDAX'
-}
+$(document).ready(() => {
+  const coins = ['btc', 'eth', 'bch', 'ltc'];
+  const selectedExchanges = exchangesNames.filter(name => name !== 'cmc');
+  coins.forEach(coinName => {
+    let template = [];    
+    selectedExchanges.forEach(exchangesName => {
+      const rows = selectedExchanges
+        .filter(name => name !== exchangesName)
+        .map((name, idx) => {
+          if (idx !== 0) {
+            return `
+              <tr>
+                <td>${exchangesFullNames[name]}</td>
+                <td class="${coinName}-${exchangesName}-${name} text-center">-</td>
+              </tr>
+            `
+          } else {
+            return `
+              <tr>
+                <td rowspan="6" class="text-center align-middle">${exchangesFullNames[exchangesName]}</td>
+                <td>${exchangesFullNames[name]}</td>
+                <td class="${coinName}-${exchangesName}-${name} text-center">-</td>
+              </tr>
+            `
+          }
+        })
+
+      let rowsStr = '';
+      rows.forEach(str => {
+        rowsStr += str
+      })
+      
+      template.push(`
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 mt-4">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th class="text-center">Source</th>
+                <th class="text-center">Destination</th>
+                <th class="text-center">Profit (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rowsStr}
+            </tbody>
+          </table>
+        </div>
+      `)
+    })
+    
+    template = _.reverse(template);
+    template.forEach(temp => $('#arbitrage-board .' + coinName + '-title').after(temp));
+    template = [];
+  })
+})
+
+//
+// ─── CALCULATOR ─────────────────────────────────────────────────────────────
+//
 
 let selectedCoin;
 let buyPrice = 0;
@@ -407,7 +471,7 @@ const selectNavbarMenu = elemId => {
 }
 
 const showPage = pageId => {
-  const pageList =['ticker-board', 'arbitrage-board', 'donation-board', 'contact-board'];
+  const pageList =['ticker-board', 'arbitrage-board', 'calculator-board', 'donation-board', 'contact-board'];
   pageList.forEach(id => {
     if (id !== pageId) {
       $('#' + id).hide();
