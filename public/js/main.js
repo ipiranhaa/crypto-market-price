@@ -3,6 +3,7 @@ let selectedCurrency = 'thb';
 
 // Todo: revise models
 const exchangesNames = ['bx', 'bfx', 'cb', 'btx', 'bin', 'cex', 'cmc', 'gdax'];
+const mainCoins = ['btc', 'eth', 'bch', 'ltc'];
 const exchangesFullNames = {
   'bx': 'BX',
   'bfx': 'Bitfinex',
@@ -82,6 +83,8 @@ socket.on('bx', function(msg) {
   msg.forEach(coin => {
     Object.assign(collection.bx[coin.name], coin);
   })
+
+  assignArbitrageTableDetail();
 });
 
 socket.on('bfx', function(msg) {
@@ -90,6 +93,8 @@ socket.on('bfx', function(msg) {
   msg.forEach(coin => {
     Object.assign(collection.bfx[coin.name], coin);
   })
+
+  assignArbitrageTableDetail();
 });
 
 socket.on('coinbase', function(msg) {
@@ -98,6 +103,8 @@ socket.on('coinbase', function(msg) {
   msg.forEach(coin => {
     Object.assign(collection.cb[coin.name], coin);
   })
+
+  assignArbitrageTableDetail();
 });
 
 socket.on('cex', function(msg) {
@@ -106,6 +113,8 @@ socket.on('cex', function(msg) {
   msg.forEach(coin => {
     Object.assign(collection.cex[coin.name], coin);
   })
+
+  assignArbitrageTableDetail();
 });
 
 socket.on('bittrex', function(msg) {
@@ -114,6 +123,8 @@ socket.on('bittrex', function(msg) {
   msg.forEach(coin => {
     Object.assign(collection.btx[coin.name], coin);
   })
+
+  assignArbitrageTableDetail();
 });
 
 socket.on('binance', function(msg) {
@@ -122,6 +133,8 @@ socket.on('binance', function(msg) {
   msg.forEach(coin => {
     Object.assign(collection.bin[coin.name], coin);
   })
+
+  assignArbitrageTableDetail();
 });
 
 socket.on('coinmarketcap', function(msg) {
@@ -138,6 +151,8 @@ socket.on('gdax', function(msg) {
   msg.forEach(coin => {
     Object.assign(collection.gdax[coin.name], coin);
   })
+
+  assignArbitrageTableDetail();
 });
 
 //
@@ -260,27 +275,28 @@ $('#contact-btn').click(e => {
 //
 
 $(document).ready(() => {
-  const coins = ['btc', 'eth', 'bch', 'ltc'];
   const selectedExchanges = exchangesNames.filter(name => name !== 'cmc');
-  coins.forEach(coinName => {
+  mainCoins.forEach(coinName => {
     let template = [];    
-    selectedExchanges.forEach(exchangesName => {
+    selectedExchanges.forEach(sourceExchanges => {
       const rows = selectedExchanges
-        .filter(name => name !== exchangesName)
-        .map((name, idx) => {
+        .filter(name => name !== sourceExchanges)
+        .map((destinationExchanges, idx) => {
           if (idx !== 0) {
             return `
               <tr>
-                <td>${exchangesFullNames[name]}</td>
-                <td class="${coinName}-${exchangesName}-${name} text-center">-</td>
+                <td>${exchangesFullNames[destinationExchanges]}</td>
+                <td class="${coinName}-${sourceExchanges}-${destinationExchanges} text-center">-</td>
               </tr>
             `
           } else {
             return `
               <tr>
-                <td rowspan="6" class="text-center align-middle">${exchangesFullNames[exchangesName]}</td>
-                <td>${exchangesFullNames[name]}</td>
-                <td class="${coinName}-${exchangesName}-${name} text-center">-</td>
+                <td rowspan="6" class="text-center align-middle">
+                  <img src="img/exchanges/${sourceExchanges}-logo.png">
+                </td>
+                <td>${exchangesFullNames[destinationExchanges]}</td>
+                <td class="${coinName}-${sourceExchanges}-${destinationExchanges} text-center">-</td>
               </tr>
             `
           }
@@ -314,6 +330,43 @@ $(document).ready(() => {
     template = [];
   })
 })
+
+const assignArbitrageTableDetail = () => {
+  const clearStyled = (selectorStr) => {
+    if ($(selectorStr).hasClass('form-plus')) {
+      $(selectorStr).removeClass('form-plus')
+    }
+
+    if ($(selectorStr).hasClass('form-minus')) {
+      $(selectorStr).removeClass('form-minus')
+    }
+  }
+
+  const selectedExchanges = exchangesNames.filter(name => name !== 'cmc');
+  mainCoins.forEach(coinName => {
+    selectedExchanges.forEach(sourceExchanges => {
+      const availableExchanges = selectedExchanges.filter(name => name !== sourceExchanges);
+      availableExchanges.forEach(destinationExchanges => {
+        const elemSeletor = '#arbitrage-board .' + coinName + '-' + sourceExchanges + '-' + destinationExchanges;
+        const sourcePrice = collection[sourceExchanges][coinName.toUpperCase()].last_price;
+        const destinationPrice = collection[destinationExchanges][coinName.toUpperCase()].last_price;
+        if (sourcePrice && destinationPrice) {
+          const summaryPercent = (((destinationPrice - sourcePrice) / sourcePrice) * 100).toFixed(2)
+          
+          // Set styled
+          clearStyled(elemSeletor);
+          if (summaryPercent > 0) {
+            $(elemSeletor).addClass('form-plus')
+          } else if (summaryPercent < 0) {
+            $(elemSeletor).addClass('form-minus')            
+          }
+
+          $(elemSeletor).html(summaryPercent);
+        }
+      })
+    })
+  })
+}
 
 //
 // ─── CALCULATOR ─────────────────────────────────────────────────────────────
