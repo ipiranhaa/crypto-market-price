@@ -36,7 +36,7 @@ let isGdaxFetched = false;
 const configMsg = {
   hello: 'สวัสดีครับ',
   donate: 'อย่าลืม Donate ให้กำลังใจกันด้วยนะครับ',
-  topDonator: 'ดวงกมล: ฿500 THB'
+  topDonator: 'Krisada: ฿750 THB'
 }
 
 const settings = {
