@@ -12,18 +12,27 @@ const filter = [
   'USDT-BCC',   // BCH
   'USDT-DASH',  // DAS
   'USDT-LTC',   // LTC
-  // 'USDT-XZC',   // XZC
+  'BTC-XZC'     // XZC
 ];
 const currency = 'usd'
+let btc2usd = '';
 
-function parser(data) {
+function parser(data, srcCurrency) {
   const result = new Model();
   if (!data) return result;
 
   result.name = util.nameConverter(data.name);
-  result.last_price = data.Last * global.THB;
-  result.last_price_usd = data.Last;
-
+  if (srcCurrency === 'USDT') {
+    if (result.name === 'BTC') {
+      btc2usd = data.Last;
+    }
+    result.last_price = data.Last * global.THB;
+    result.last_price_usd = data.Last;
+  } else {
+    result.last_price = (data.Last * btc2usd) * global.THB;
+    result.last_price_usd = data.Last * btc2usd;
+  }
+  
   return result;
 }
 
@@ -38,8 +47,9 @@ function get(symbol, callback) {
         if (!body.result) {
           body.result = {};
         }
-        body.result.name = symbol.split('USDT-')[1];
-        callback(body.result)
+        const splitedName = symbol.split('-');
+        body.result.name = splitedName[1];
+        callback(body.result, splitedName[0])
        }
     }
   });
@@ -49,9 +59,9 @@ function fetch(callback) {
   callback = callback || function(){};
   const val = [];
   _.each(filter, function(symbol) {
-    get(symbol, function(data) {
+    get(symbol, function(data, srcCurrency) {
       if (data) {
-        val.push(parser(data));
+        val.push(parser(data, srcCurrency));
       }
 
       if (val.length === filter.length) {
