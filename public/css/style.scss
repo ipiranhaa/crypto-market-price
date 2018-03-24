@@ -421,10 +421,16 @@ div#calculator-board {
 div#contact-board {
   color: $background;
   padding: 2vh 2vw;
+  overflow-y: auto;
   
   h2 {
     color: $font;
     margin: 2vh auto;
     text-align: center;
+  }
+
+  .row {
+    padding-top: 1vh;
+    padding-bottom: 1vh;
   }
 }
