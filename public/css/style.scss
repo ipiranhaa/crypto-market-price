@@ -284,14 +284,29 @@ div#donation-board {
 
   // Paypal button
   .paypal-btn {
-    background-color: #FBC049;
-    color: #09314F;
     font-weight: bold;
-    font-style: italic;
     margin-bottom: 10px;
-    &:hover {
-      background-color: #E9D460;
-      color: #09314F;
+    
+    background-image: linear-gradient(#FFF0A8, #F9B421);
+
+    .paypal {
+      &-logo {
+        font-family: Verdana, Tahoma;
+        font-weight: bold;
+        font-size: 20px;
+
+        i {
+          float: left;
+        }
+
+        i:first-child {
+          color: #253b80;
+        }
+
+        i:last-child {
+          color: #179bd7;
+        }
+      }
     }
   }
 
@@ -305,7 +320,7 @@ div#donation-board {
       color: $font;
     }
   }
-}
+}  
 
 // Arbitrage Page
 div#arbitrage-board {
