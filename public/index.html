@@ -1,663 +1,667 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Coins Comparator</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="description" content="Cryptocurrency price comparator with multi exchanges between BX, Bitfinex, Bittrex, Gdax, Coinbase, Binance, Coinmarketcap, Cex.io and etc.">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Coins Comparator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Cryptocurrency price comparator with multi exchanges between BX, Bitfinex, Bittrex, Gdax, Coinbase, Binance, Coinmarketcap, Cex.io and etc.">
 
-  <!-- Schema.org markup for Google+ -->
-  <meta itemprop="name" content="Coins Comparator">
-  <meta itemprop="description" content="Cryptocurrency price comparator with multi exchanges between BX, Bitfinex, Bittrex, Gdax, Coinbase, Binance, Coinmarketcap, Cex.io and etc.">
-  <meta itemprop="image" content="https://thecoinscomparator.com/img/icons/splash.jpg">
+    <!-- Schema.org markup for Google+ -->
+    <meta itemprop="name" content="Coins Comparator">
+    <meta itemprop="description" content="Cryptocurrency price comparator with multi exchanges between BX, Bitfinex, Bittrex, Gdax, Coinbase, Binance, Coinmarketcap, Cex.io and etc.">
+    <meta itemprop="image" content="https://thecoinscomparator.com/img/icons/splash.jpg">
 
-  <!-- Twitter Card data -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@ipiranhaa">
-  <meta name="twitter:title" content="Coins Comparator">
-  <meta name="twitter:description" content="Cryptocurrency price comparator with multi exchanges between BX, Bitfinex, Bittrex, Gdax, Coinbase, Binance, Coinmarketcap, Cex.io and etc.">
-  <meta name="twitter:creator" content="@ipiranhaa">
-  <meta name="twitter:image:src" content="https://thecoinscomparator.com/img/icons/splash.jpg">
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@ipiranhaa">
+    <meta name="twitter:title" content="Coins Comparator">
+    <meta name="twitter:description" content="Cryptocurrency price comparator with multi exchanges between BX, Bitfinex, Bittrex, Gdax, Coinbase, Binance, Coinmarketcap, Cex.io and etc.">
+    <meta name="twitter:creator" content="@ipiranhaa">
+    <meta name="twitter:image:src" content="https://thecoinscomparator.com/img/icons/splash.jpg">
 
-  <!-- Open Graph data -->
-  <meta property="og:title" content="Coins Comparator" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://thecoinscomparator.com/" />
-  <meta property="og:image" content="https://thecoinscomparator.com/img/icons/splash.jpg" />
-  <meta property="og:description" content="Cryptocurrency price comparator with multi exchanges between BX, Bitfinex, Bittrex, Gdax, Coinbase, Binance, Coinmarketcap, Cex.io and etc." />
-  <meta property="og:site_name" content="Cryptocurency price comparator" />
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Coins Comparator" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://thecoinscomparator.com/" />
+    <meta property="og:image" content="https://thecoinscomparator.com/img/icons/splash.jpg" />
+    <meta property="og:description" content="Cryptocurrency price comparator with multi exchanges between BX, Bitfinex, Bittrex, Gdax, Coinbase, Binance, Coinmarketcap, Cex.io and etc." />
+    <meta property="og:site_name" content="Cryptocurency price comparator" />
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-  <link rel="stylesheet" type="text/css" href="build/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="build/style.css">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/img/icons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16x16.png">
-  <link rel="manifest" href="/img/icons/manifest.json">
-  <link rel="mask-icon" href="/img/icons/safari-pinned-tab.svg" color="#3c3c3c">
-  <link rel="shortcut icon" href="/img/icons/favicon.ico">
-  <meta name="apple-mobile-web-app-title" content="Coins Comparator">
-  <meta name="application-name" content="Coins Comparator">
-  <meta name="msapplication-TileColor" content="#2b5797">
-  <meta name="msapplication-config" content="/img/icons/browserconfig.xml">
-  <meta name="theme-color" content="#3c3c3c">
-</head>
-<body>
-  <nav class="navbar navbar-toggleable-md navbar-inverse">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand mb-0" href="https://thecoinscomparator.com">
-      <img src="img/logo.gif" width="50" class="d-inline-block" alt="">
-      Coins Comparator
-    </a>
-    <div class="collapse navbar-collapse" id="navbarToggler">
-      <ul class="navbar-nav mr-auto mt-2 mt-md-0">
-        <li class="nav-item active">
-          <a class="nav-link" id="price-compare-btn" href="#"><i class="fa fa-compass" aria-hidden="true"></i> Price Compare</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="arbitrage-compare-btn" href="#"><i class="fa fa-list-alt" aria-hidden="true"></i> Arbitrage Compare</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="calculator-btn" href="#"><i class="fa fa-calculator" aria-hidden="true"></i> Calculator</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="donate-btn" href="#"><i class="fa fa-heart" aria-hidden="true"></i> Donate</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="contact-btn" href="#"><i class="fa fa-user" aria-hidden="true"></i> Contact</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <div class="custom-container" id="ticker-board">
-    <div class="header row align-items-center">
-      <div class="col">
-        <span class="title">#</span>
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16x16.png">
+    <link rel="manifest" href="/img/icons/manifest.json">
+    <link rel="mask-icon" href="/img/icons/safari-pinned-tab.svg" color="#3c3c3c">
+    <link rel="shortcut icon" href="/img/icons/favicon.ico">
+    <meta name="apple-mobile-web-app-title" content="Coins Comparator">
+    <meta name="application-name" content="Coins Comparator">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-config" content="/img/icons/browserconfig.xml">
+    <meta name="theme-color" content="#3c3c3c">
+  </head>
+  <body>
+    <nav class="navbar navbar-toggleable-md navbar-inverse">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand mb-0" href="https://thecoinscomparator.com">
+        <img src="img/logo.gif" width="50" class="d-inline-block" alt="">
+        Coins Comparator
+      </a>
+      <div class="collapse navbar-collapse" id="navbarToggler">
+        <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+          <li class="nav-item active">
+            <a class="nav-link" id="price-compare-btn" href="#"><i class="fa fa-compass" aria-hidden="true"></i> Price Compare</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="arbitrage-compare-btn" href="#"><i class="fa fa-list-alt" aria-hidden="true"></i> Arbitrage Compare</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="calculator-btn" href="#"><i class="fa fa-calculator" aria-hidden="true"></i> Calculator</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="donate-btn" href="#"><i class="fa fa-heart" aria-hidden="true"></i> Donate</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="contact-btn" href="#"><i class="fa fa-user" aria-hidden="true"></i> Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="settings-btn" href="#"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a>
+          </li>
+        </ul>
       </div>
-      <div class="col">
-        <span class="title">
-          <a href="https://bx.in.th" target="_blank">bx.in.th</a>
-        </span>
-      </div>
-      <div class="col">
-        <span class="title">
-          <a href="https://www.bitfinex.com" target="_blank">bitfinex</a>
-        </span>
-      </div>
-      <div class="col">
-        <span class="title">
-          <a href="https://bittrex.com" target="_blank">bittrex</a>          
-        </span>
-      </div>
-      <div class="col">
-        <span class="title">
-          <a href="https://www.binance.com" target="_blank">binance</a>
-        </span>
-      </div>
-      <div class="col">
-        <span class="title">
-          <a href="https://cex.io" target="_blank">cex.io</a>
-        </span>
-      </div>
-      <!-- <div class="col">
-        <span class="title">
-          <a href="https://www.coinbase.com" target="_blank">coinbase</a>
-        </span>
-      </div> -->
-      <div class="col">
-        <span class="title">
-          <a href="https://coinmarketcap.com" target="_blank">coinmarketcap</a>
-        </span>
-      </div>
-    </div>
-
-    <div class="content-container">
-      <div class="row content-row">
+    </nav>
+    <div class="custom-container" id="ticker-board">
+      <div class="header row align-items-center">
         <div class="col">
-          <img class="icon "src="img/btc-icon.png" alt="Bitcoin">
-          <span class="coin-name">BTC</span>
+          <span class="title">#</span>
         </div>
         <div class="col">
-          <span class="price bx-btc">-</span>
-          <sub class="change bx-btc"></sub>
+          <span class="title">
+            <a href="https://bx.in.th" target="_blank">bx.in.th</a>
+          </span>
         </div>
         <div class="col">
-          <span class="price bfx-btc">-</span>
-          <sub class="change bfx-btc"></sub>
+          <span class="title">
+            <a href="https://www.bitfinex.com" target="_blank">bitfinex</a>
+          </span>
         </div>
         <div class="col">
-          <span class="price btx-btc">-</span>
-          <sub class="change btx-btc"></sub>
+          <span class="title">
+            <a href="https://bittrex.com" target="_blank">bittrex</a>          
+          </span>
         </div>
         <div class="col">
-          <span class="price bin-btc">-</span>
-          <sub class="change bin-btc"></sub>
+          <span class="title">
+            <a href="https://www.binance.com" target="_blank">binance</a>
+          </span>
         </div>
         <div class="col">
-          <span class="price cex-btc">-</span>
-          <sub class="change cex-btc"></sub>
+          <span class="title">
+            <a href="https://cex.io" target="_blank">cex.io</a>
+          </span>
         </div>
         <!-- <div class="col">
-          <span class="price cb-btc">-</span>
-          <sub class="change cb-btc"></sub>
+          <span class="title">
+            <a href="https://www.coinbase.com" target="_blank">coinbase</a>
+          </span>
         </div> -->
         <div class="col">
-          <span class="price cmc-btc">-</span>
-          <sub class="change cmc-btc"></sub>
+          <span class="title">
+            <a href="https://coinmarketcap.com" target="_blank">coinmarketcap</a>
+          </span>
         </div>
       </div>
 
-      <div class="row content-row">
-        <div class="col">
-          <img class="icon "src="img/eth-icon.png" alt="Ethereum">
-          <span class="coin-name">ETH</span>
+      <div class="content-container">
+        <div class="row content-row">
+          <div class="col">
+            <img class="icon "src="img/btc-icon.png" alt="Bitcoin">
+            <span class="coin-name">BTC</span>
+          </div>
+          <div class="col">
+            <span class="price bx-btc">-</span>
+            <sub class="change bx-btc"></sub>
+          </div>
+          <div class="col">
+            <span class="price bfx-btc">-</span>
+            <sub class="change bfx-btc"></sub>
+          </div>
+          <div class="col">
+            <span class="price btx-btc">-</span>
+            <sub class="change btx-btc"></sub>
+          </div>
+          <div class="col">
+            <span class="price bin-btc">-</span>
+            <sub class="change bin-btc"></sub>
+          </div>
+          <div class="col">
+            <span class="price cex-btc">-</span>
+            <sub class="change cex-btc"></sub>
+          </div>
+          <!-- <div class="col">
+            <span class="price cb-btc">-</span>
+            <sub class="change cb-btc"></sub>
+          </div> -->
+          <div class="col">
+            <span class="price cmc-btc">-</span>
+            <sub class="change cmc-btc"></sub>
+          </div>
         </div>
-        <div class="col">
-          <span class="price bx-eth">-</span>
-          <sub class="change bx-eth"></sub>
+
+        <div class="row content-row">
+          <div class="col">
+            <img class="icon "src="img/eth-icon.png" alt="Ethereum">
+            <span class="coin-name">ETH</span>
+          </div>
+          <div class="col">
+            <span class="price bx-eth">-</span>
+            <sub class="change bx-eth"></sub>
+          </div>
+          <div class="col">
+            <span class="price bfx-eth">-</span>
+            <sub class="change bfx-eth"></sub>
+          </div>
+          <div class="col">
+            <span class="price btx-eth">-</span>
+            <sub class="change btx-eth"></sub>
+          </div>
+          <div class="col">
+            <span class="price bin-eth">-</span>
+            <sub class="change bin-eth"></sub>
+          </div>
+          <div class="col">
+            <span class="price cex-eth">-</span>
+            <sub class="change cex-eth"></sub>
+          </div>
+          <!-- <div class="col">
+            <span class="price cb-eth">-</span>
+            <sub class="change cb-eth"></sub>
+          </div> -->
+          <div class="col">
+            <span class="price cmc-eth">-</span>
+            <sub class="change cmc-eth"></sub>
+          </div>
         </div>
-        <div class="col">
-          <span class="price bfx-eth">-</span>
-          <sub class="change bfx-eth"></sub>
+
+        <div class="row content-row">
+          <div class="col">
+            <img class="icon "src="img/bch-icon.png" alt="Bitcoin cash">
+            <span class="coin-name">BCH</span>
+          </div>
+          <div class="col">
+            <span class="price bx-bch">-</span>
+            <sub class="change bx-bch"></sub>
+          </div>
+          <div class="col">
+            <span class="price bfx-bch">-</span>
+            <sub class="change bfx-bch"></sub>
+          </div>
+          <div class="col">
+            <span class="price btx-bch">-</span>
+            <sub class="change btx-bch"></sub>
+          </div>
+          <div class="col">
+            <span class="price bin-bch">-</span>
+            <sub class="change bin-bch"></sub>
+          </div>
+          <div class="col">
+            <span class="price cex-bch">-</span>
+            <sub class="change cex-bch"></sub>
+          </div>
+          <!-- <div class="col">
+            <span class="price cb-bch">-</span>
+            <sub class="change cb-bch"></sub>
+          </div> -->
+          <div class="col">
+            <span class="price cmc-bch">-</span>
+            <sub class="change cmc-bch"></sub>
+          </div>
+        </div>  
+
+        <div class="row content-row">
+          <div class="col">
+            <img class="icon "src="img/omg-icon.png" alt="Omise Go">
+            <span class="coin-name">OMG</span>
+          </div>
+          <div class="col">
+            <span class="price bx-omg">-</span>
+            <sub class="change bx-omg"></sub>
+          </div>
+          <div class="col">
+            <span class="price bfx-omg">-</span>
+            <sub class="change bfx-omg"></sub>
+          </div>
+          <div class="col">
+            <span class="price btx-omg">-</span>
+            <sub class="change btx-omg"></sub>
+          </div>
+          <div class="col">
+            <span class="price bin-omg">-</span>
+            <sub class="change bin-omg"></sub>
+          </div>
+          <div class="col">
+            <span class="price cex-omg">-</span>
+            <sub class="change cex-omg"></sub>
+          </div>
+          <!-- <div class="col">
+            <span class="price cb-omg">-</span>
+            <sub class="change cb-omg"></sub>
+          </div> -->
+          <div class="col">
+            <span class="price cmc-omg">-</span>
+            <sub class="change cmc-omg"></sub>
+          </div>
         </div>
-        <div class="col">
-          <span class="price btx-eth">-</span>
-          <sub class="change btx-eth"></sub>
+
+        <div class="row content-row">
+          <div class="col">
+            <img class="icon "src="img/xrp-icon.png" alt="Ripple">
+            <span class="coin-name">XRP</span>
+          </div>
+          <div class="col">
+            <span class="price bx-xrp">-</span>
+            <sub class="change bx-xrp"></sub>
+          </div>
+          <div class="col">
+            <span class="price bfx-xrp">-</span>
+            <sub class="change bfx-xrp"></sub>
+          </div>
+          <div class="col">
+            <span class="price btx-xrp">-</span>
+            <sub class="change btx-xrp"></sub>
+          </div>
+          <div class="col">
+            <span class="price bin-xrp">-</span>
+            <sub class="change bin-xrp"></sub>
+          </div>
+          <div class="col">
+            <span class="price cex-xrp">-</span>
+            <sub class="change cex-xrp"></sub>
+          </div>
+          <!-- <div class="col">
+            <span class="price cb-xrp">-</span>
+            <sub class="change cb-xrp"></sub>
+          </div> -->
+          <div class="col">
+            <span class="price cmc-xrp">-</span>
+            <sub class="change cmc-xrp"></sub>
+          </div>
         </div>
-        <div class="col">
-          <span class="price bin-eth">-</span>
-          <sub class="change bin-eth"></sub>
+
+        <div class="row content-row">
+          <div class="col">
+            <img class="icon "src="img/evx-icon.png" alt="Everex">
+            <span class="coin-name">EVX</span>
+          </div>
+          <div class="col">
+            <span class="price bx-evx">-</span>
+            <sub class="change bx-evx"></sub>
+          </div>
+          <div class="col">
+            <span class="price bfx-evx">-</span>
+            <sub class="change bfx-evx"></sub>
+          </div>
+          <div class="col">
+            <span class="price btx-evx">-</span>
+            <sub class="change btx-evx"></sub>
+          </div>
+          <div class="col">
+            <span class="price bin-evx">-</span>
+            <sub class="change bin-evx"></sub>
+          </div>
+          <div class="col">
+            <span class="price cex-evx">-</span>
+            <sub class="change cex-evx"></sub>
+          </div>
+          <!-- <div class="col">
+            <span class="price cb-evx">-</span>
+            <sub class="change cb-evx"></sub>
+          </div> -->
+          <div class="col">
+            <span class="price cmc-evx">-</span>
+            <sub class="change cmc-evx"></sub>
+          </div>
         </div>
-        <div class="col">
-          <span class="price cex-eth">-</span>
-          <sub class="change cex-eth"></sub>
+
+        <div class="row content-row">
+          <div class="col">
+            <img class="icon "src="img/das-icon.png" alt="Dash">
+            <span class="coin-name">DAS</span>
+          </div>
+          <div class="col">
+            <span class="price bx-das">-</span>
+            <sub class="change bx-das"></sub>
+          </div>
+          <div class="col">
+            <span class="price bfx-das">-</span>
+            <sub class="change bfx-das"></sub>
+          </div>
+          <div class="col">
+            <span class="price btx-das">-</span>
+            <sub class="change btx-das"></sub>
+          </div>
+          <div class="col">
+            <span class="price bin-das">-</span>
+            <sub class="change bin-das"></sub>
+          </div>
+          <div class="col">
+            <span class="price cex-das">-</span>
+            <sub class="change cex-das"></sub>
+          </div>
+          <!-- <div class="col">
+            <span class="price cb-das">-</span>
+            <sub class="change cb-das"></sub>
+          </div> -->
+          <div class="col">
+            <span class="price cmc-das">-</span>
+            <sub class="change cmc-das"></sub>
+          </div>
         </div>
-        <!-- <div class="col">
-          <span class="price cb-eth">-</span>
-          <sub class="change cb-eth"></sub>
-        </div> -->
-        <div class="col">
-          <span class="price cmc-eth">-</span>
-          <sub class="change cmc-eth"></sub>
+
+        <div class="row content-row">
+          <div class="col">
+            <img class="icon "src="img/ltc-icon.png" alt="Lite Coin">
+            <span class="coin-name">LTC</span>
+          </div>
+          <div class="col">
+            <span class="price bx-ltc">-</span>
+            <sub class="change bx-ltc"></sub>
+          </div>
+          <div class="col">
+            <span class="price bfx-ltc">-</span>
+            <sub class="change bfx-ltc"></sub>
+          </div>
+          <div class="col">
+            <span class="price btx-ltc">-</span>
+            <sub class="change btx-ltc"></sub>
+          </div>
+          <div class="col">
+            <span class="price bin-ltc">-</span>
+            <sub class="change bin-ltc"></sub>
+          </div>
+          <div class="col">
+            <span class="price cex-ltc">-</span>
+            <sub class="change cex-ltc"></sub>
+          </div>
+          <!-- <div class="col">
+            <span class="price cb-ltc">-</span>
+            <sub class="change cb-ltc"></sub>
+          </div> -->
+          <div class="col">
+            <span class="price cmc-ltc">-</span>
+            <sub class="change cmc-ltc"></sub>
+          </div>
+        </div>
+
+        <div class="row content-row">
+          <div class="col">
+            <img class="icon "src="img/xzc-icon.png" alt="ZCoin">
+            <span class="coin-name">XZC</span>
+          </div>
+          <div class="col">
+            <span class="price bx-xzc">-</span>
+            <sub class="change bx-xzc"></sub>
+          </div>
+          <div class="col">
+            <span class="price bfx-xzc">-</span>
+            <sub class="change bfx-xzc"></sub>
+          </div>
+          <div class="col">
+            <span class="price btx-xzc">-</span>
+            <sub class="change btx-xzc"></sub>
+          </div>
+          <div class="col">
+            <span class="price bin-xzc">-</span>
+            <sub class="change bin-xzc"></sub>
+          </div>
+          <div class="col">
+            <span class="price cex-xzc">-</span>
+            <sub class="change cex-xzc"></sub>
+          </div>
+          <!-- <div class="col">
+            <span class="price cb-xzc">-</span>
+            <sub class="change cb-xzc"></sub>
+          </div> -->
+          <div class="col">
+            <span class="price cmc-xzc">-</span>
+            <sub class="change cmc-xzc"></sub>
+          </div>
         </div>
       </div>
+    
 
-      <div class="row content-row">
-        <div class="col">
-          <img class="icon "src="img/bch-icon.png" alt="Bitcoin cash">
-          <span class="coin-name">BCH</span>
-        </div>
-        <div class="col">
-          <span class="price bx-bch">-</span>
-          <sub class="change bx-bch"></sub>
-        </div>
-        <div class="col">
-          <span class="price bfx-bch">-</span>
-          <sub class="change bfx-bch"></sub>
-        </div>
-        <div class="col">
-          <span class="price btx-bch">-</span>
-          <sub class="change btx-bch"></sub>
-        </div>
-        <div class="col">
-          <span class="price bin-bch">-</span>
-          <sub class="change bin-bch"></sub>
-        </div>
-        <div class="col">
-          <span class="price cex-bch">-</span>
-          <sub class="change cex-bch"></sub>
-        </div>
-        <!-- <div class="col">
-          <span class="price cb-bch">-</span>
-          <sub class="change cb-bch"></sub>
-        </div> -->
-        <div class="col">
-          <span class="price cmc-bch">-</span>
-          <sub class="change cmc-bch"></sub>
-        </div>
-      </div>  
-
-      <div class="row content-row">
-        <div class="col">
-          <img class="icon "src="img/omg-icon.png" alt="Omise Go">
-          <span class="coin-name">OMG</span>
-        </div>
-        <div class="col">
-          <span class="price bx-omg">-</span>
-          <sub class="change bx-omg"></sub>
-        </div>
-        <div class="col">
-          <span class="price bfx-omg">-</span>
-          <sub class="change bfx-omg"></sub>
-        </div>
-        <div class="col">
-          <span class="price btx-omg">-</span>
-          <sub class="change btx-omg"></sub>
-        </div>
-        <div class="col">
-          <span class="price bin-omg">-</span>
-          <sub class="change bin-omg"></sub>
-        </div>
-        <div class="col">
-          <span class="price cex-omg">-</span>
-          <sub class="change cex-omg"></sub>
-        </div>
-        <!-- <div class="col">
-          <span class="price cb-omg">-</span>
-          <sub class="change cb-omg"></sub>
-        </div> -->
-        <div class="col">
-          <span class="price cmc-omg">-</span>
-          <sub class="change cmc-omg"></sub>
-        </div>
-      </div>
-
-      <div class="row content-row">
-        <div class="col">
-          <img class="icon "src="img/xrp-icon.png" alt="Ripple">
-          <span class="coin-name">XRP</span>
-        </div>
-        <div class="col">
-          <span class="price bx-xrp">-</span>
-          <sub class="change bx-xrp"></sub>
-        </div>
-        <div class="col">
-          <span class="price bfx-xrp">-</span>
-          <sub class="change bfx-xrp"></sub>
-        </div>
-        <div class="col">
-          <span class="price btx-xrp">-</span>
-          <sub class="change btx-xrp"></sub>
-        </div>
-        <div class="col">
-          <span class="price bin-xrp">-</span>
-          <sub class="change bin-xrp"></sub>
-        </div>
-        <div class="col">
-          <span class="price cex-xrp">-</span>
-          <sub class="change cex-xrp"></sub>
-        </div>
-        <!-- <div class="col">
-          <span class="price cb-xrp">-</span>
-          <sub class="change cb-xrp"></sub>
-        </div> -->
-        <div class="col">
-          <span class="price cmc-xrp">-</span>
-          <sub class="change cmc-xrp"></sub>
-        </div>
-      </div>
-
-      <div class="row content-row">
-        <div class="col">
-          <img class="icon "src="img/evx-icon.png" alt="Everex">
-          <span class="coin-name">EVX</span>
-        </div>
-        <div class="col">
-          <span class="price bx-evx">-</span>
-          <sub class="change bx-evx"></sub>
-        </div>
-        <div class="col">
-          <span class="price bfx-evx">-</span>
-          <sub class="change bfx-evx"></sub>
-        </div>
-        <div class="col">
-          <span class="price btx-evx">-</span>
-          <sub class="change btx-evx"></sub>
-        </div>
-        <div class="col">
-          <span class="price bin-evx">-</span>
-          <sub class="change bin-evx"></sub>
-        </div>
-        <div class="col">
-          <span class="price cex-evx">-</span>
-          <sub class="change cex-evx"></sub>
-        </div>
-        <!-- <div class="col">
-          <span class="price cb-evx">-</span>
-          <sub class="change cb-evx"></sub>
-        </div> -->
-        <div class="col">
-          <span class="price cmc-evx">-</span>
-          <sub class="change cmc-evx"></sub>
-        </div>
-      </div>
-
-      <div class="row content-row">
-        <div class="col">
-          <img class="icon "src="img/das-icon.png" alt="Dash">
-          <span class="coin-name">DAS</span>
-        </div>
-        <div class="col">
-          <span class="price bx-das">-</span>
-          <sub class="change bx-das"></sub>
-        </div>
-        <div class="col">
-          <span class="price bfx-das">-</span>
-          <sub class="change bfx-das"></sub>
-        </div>
-        <div class="col">
-          <span class="price btx-das">-</span>
-          <sub class="change btx-das"></sub>
-        </div>
-        <div class="col">
-          <span class="price bin-das">-</span>
-          <sub class="change bin-das"></sub>
-        </div>
-        <div class="col">
-          <span class="price cex-das">-</span>
-          <sub class="change cex-das"></sub>
-        </div>
-        <!-- <div class="col">
-          <span class="price cb-das">-</span>
-          <sub class="change cb-das"></sub>
-        </div> -->
-        <div class="col">
-          <span class="price cmc-das">-</span>
-          <sub class="change cmc-das"></sub>
-        </div>
-      </div>
-
-      <div class="row content-row">
-        <div class="col">
-          <img class="icon "src="img/ltc-icon.png" alt="Lite Coin">
-          <span class="coin-name">LTC</span>
-        </div>
-        <div class="col">
-          <span class="price bx-ltc">-</span>
-          <sub class="change bx-ltc"></sub>
-        </div>
-        <div class="col">
-          <span class="price bfx-ltc">-</span>
-          <sub class="change bfx-ltc"></sub>
-        </div>
-        <div class="col">
-          <span class="price btx-ltc">-</span>
-          <sub class="change btx-ltc"></sub>
-        </div>
-        <div class="col">
-          <span class="price bin-ltc">-</span>
-          <sub class="change bin-ltc"></sub>
-        </div>
-        <div class="col">
-          <span class="price cex-ltc">-</span>
-          <sub class="change cex-ltc"></sub>
-        </div>
-        <!-- <div class="col">
-          <span class="price cb-ltc">-</span>
-          <sub class="change cb-ltc"></sub>
-        </div> -->
-        <div class="col">
-          <span class="price cmc-ltc">-</span>
-          <sub class="change cmc-ltc"></sub>
-        </div>
-      </div>
-
-      <div class="row content-row">
-        <div class="col">
-          <img class="icon "src="img/xzc-icon.png" alt="ZCoin">
-          <span class="coin-name">XZC</span>
-        </div>
-        <div class="col">
-          <span class="price bx-xzc">-</span>
-          <sub class="change bx-xzc"></sub>
-        </div>
-        <div class="col">
-          <span class="price bfx-xzc">-</span>
-          <sub class="change bfx-xzc"></sub>
-        </div>
-        <div class="col">
-          <span class="price btx-xzc">-</span>
-          <sub class="change btx-xzc"></sub>
-        </div>
-        <div class="col">
-          <span class="price bin-xzc">-</span>
-          <sub class="change bin-xzc"></sub>
-        </div>
-        <div class="col">
-          <span class="price cex-xzc">-</span>
-          <sub class="change cex-xzc"></sub>
-        </div>
-        <!-- <div class="col">
-          <span class="price cb-xzc">-</span>
-          <sub class="change cb-xzc"></sub>
-        </div> -->
-        <div class="col">
-          <span class="price cmc-xzc">-</span>
-          <sub class="change cmc-xzc"></sub>
-        </div>
-      </div>
-    </div>
-  
-
-    <div class="footer">
-      <div class="row">
-        <div class="col-4">
-          <button type="button" class="btn btn-info btn-currency text-uppercase" data-toggle="button" aria-pressed="false" autocomplete="off">
-            <i class="fas fa-retweet"></i>
-            <span class="currency-label">THB</span>
-          </button>
-        </div>
-        <div class="col-4 btn-container">
-         
-        </div>
-        <div class="col-4 online-user">
-            <span class="online">
-            <span class="users">0</span>
-                people online
-            </span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="full-container" id="donation-board" style="display: none;">
-    <div class="container">
-      <h2>Thanks for support</h2>
-      <div class="row">
-        <div class="col-12 text-center donate-btn-group">
-          <!-- <a class="btn true-wallet-btn" href="https://goo.gl/KWqoQL" target="_blank">True Wallet</a> -->
-          <a class="btn paypal-btn" href="http://bit.ly/coinscomparator-paypal" target="_blank">
-            <span class="paypal-logo">
-              <i>Pay</i>
-              <i>Pal</i>
-            </span>
-          </a>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-          <div class="card">
-            <div class="card-header">
-              <img class="icon "src="img/btc-icon.png"> BTC
-            </div>
-            <div class="card-block">
-              <button type="button" class="btn btn-primary btn-copy" data-addr="M1A5Y1dzYmQxY3B1QlJWdVVyRlBuNTV3Q2t6OUc0OExiMg==">Copy address</button>
-            </div>
+      <div class="footer">
+        <div class="row">
+          <div class="col-4">
+            <button type="button" class="btn btn-info btn-currency text-uppercase" data-toggle="button" aria-pressed="false" autocomplete="off">
+              <i class="fas fa-exchange-alt"></i>
+              <span class="currency-label">USD</span>
+            </button>
           </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-          <div class="card">
-            <div class="card-header">
-              <img class="icon "src="img/eth-icon.png"> ETH
-            </div>
-            <div class="card-block">
-              <button type="button" class="btn btn-primary btn-copy" data-addr="MHhhOEE2ODQ1NjIxMDlEQTQxNTk5ZDc0ZTlGQzYzM2M0OTdFMjc4NDEy">Copy address</button>
-            </div>
+          <div class="col-4 btn-container">
+          
           </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-          <div class="card">
-            <div class="card-header">
-              <img class="icon "src="img/omg-icon.png"> OMG
-            </div>
-            <div class="card-block">
-              <button type="button" class="btn btn-primary btn-copy" data-addr="MHgxYkMwQjVmRjEyNWRjRUI1NDNDZTk4NUQ1ZGU2Yjc0NDU5YjU0YjUz">Copy address</button>
-            </div>
+          <div class="col-4 online-user">
+              <span class="online">
+              <span class="users">0</span>
+                  people online
+              </span>
           </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-          <div class="card">
-            <div class="card-header">
-              <img class="icon "src="img/bch-icon.png"> BCH
-            </div>
-            <div class="card-block">
-              <button type="button" class="btn btn-primary btn-copy" data-addr="MUNNa2tTNmhQNHhISk1tZVZIZDVIc290NlhCVk5ab0Yy">Copy address</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-          <div class="card">
-            <div class="card-header">
-              <img class="icon "src="img/evx-icon.png"> EVX
-            </div>
-            <div class="card-block">
-              <button type="button" class="btn btn-primary btn-copy" data-addr="MHgxYkMwQjVmRjEyNWRjRUI1NDNDZTk4NUQ1ZGU2Yjc0NDU5YjU0YjUz">Copy address</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-          <div class="card">
-            <div class="card-header">
-              <img class="icon "src="img/xrp-icon.png"> XRP
-            </div>
-            <div class="card-block">
-                <button type="button" class="btn btn-primary btn-copy" data-addr="cnA3RnEyTlFWUkp4UUp2VVo0bzhaenNUU29jdmdZb0Jicw==">Copy address</button>
-                <button type="button" class="btn btn-secondary btn-copy" data-addr="MTAwODc5MjA0MQ==">Copy dt</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-          <div class="card">
-            <div class="card-header">
-              <img class="icon "src="img/das-icon.png"> DAS
-            </div>
-            <div class="card-block">
-              <button type="button" class="btn btn-primary btn-copy" data-addr="WHlHYTlCN2k0Z3hlN0d2ZHp4dzFxeW11aGRLRDJRamF1Rw==">Copy address</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-          <div class="card">
-            <div class="card-header">
-              <img class="icon "src="img/ltc-icon.png"> LTC
-            </div>
-            <div class="card-block">
-              <button type="button" class="btn btn-primary btn-copy" data-addr="TE0xbzdZUmdrOWFaRGZIQlBreHRIajV6MW51VWJ1TjVSVQ==">Copy address</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-          <div class="card">
-            <div class="card-header">
-              <img class="icon "src="img/xzc-icon.png"> XZC
-            </div>
-            <div class="card-block">
-              <button type="button" class="btn btn-primary btn-copy" data-addr="YURSb2NITnVYSGVGWFhiUHpTU1pnTHl6eXdVdk1HOTdyQg==">Copy address</button>
-            </div>
-          </div>
-        </div>
-      </div>  
-    </div>    
-  </div>
-
-  <div class="full-container" id="arbitrage-board" style="display: none;">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 title btc-title">
-          <h2><img class="icon" src="img/btc-icon.png" alt="Bitcoin"> BTC</h2>
-        </div>
-        <div class="col-12 title eth-title">
-          <h2><img class="icon" src="img/eth-icon.png" alt="Ethereum"> ETH</h2>
-        </div>
-        <div class="col-12 title bch-title">
-          <h2><img class="icon" src="img/bch-icon.png" alt="Bitcoin cash"> BCH</h2>
-        </div>
-        <div class="col-12 title ltc-title">
-          <h2><img class="icon" src="img/ltc-icon.png" alt="Lite Coin"> LTC</h2>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="full-container" id="calculator-board" style="display: none;">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 offset-md-2 col-md-8 offset-lg-2 col-lg-8 mt-5">
-          <div class="card">
-            <div class="card-header">
-              <div class="offset-xs-1 col-xs-10 offset-sm-1 col-sm-10 offset-md-3 col-md-6 offset-lg-3 col-lg-6">
-                <select class="form-control form-control-sm" id="abt-select-coins">
-                  <option selected disabled>Select your cryptocurrencies</option>
-                  <option value="BTC">BTC</option>
-                  <option value="ETH">ETH</option>
-                  <option value="OMG">OMG</option>
-                  <option value="XRP">XRP</option>
-                  <option value="BCH">BCH</option>
-                  <option value="EVX">EVX</option>
-                  <option value="DAS">DAS</option>
-                  <option value="LTC">LTC</option>
-                  <option value="XZC">XZC</option>
-                </select>
+    <div class="full-container" id="donation-board" style="display: none;">
+      <div class="container">
+        <h2>Thanks for support</h2>
+        <div class="row">
+          <div class="col-12 text-center donate-btn-group">
+            <!-- <a class="btn true-wallet-btn" href="https://goo.gl/KWqoQL" target="_blank">True Wallet</a> -->
+            <a class="btn paypal-btn" href="http://bit.ly/coinscomparator-paypal" target="_blank">
+              <span class="paypal-logo">
+                <i>Pay</i>
+                <i>Pal</i>
+              </span>
+            </a>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="card">
+              <div class="card-header">
+                <img class="icon "src="img/btc-icon.png"> BTC
+              </div>
+              <div class="card-block">
+                <button type="button" class="btn btn-primary btn-copy" data-addr="M1A5Y1dzYmQxY3B1QlJWdVVyRlBuNTV3Q2t6OUc0OExiMg==">Copy address</button>
+              </div>
             </div>
           </div>
-            <div class="card-block">
-              <div class="row">
-                <div class="col-12">
-                  <div class="input-group">
-                    <input class="form-control buy-price" id="abt-input" type="number" min="1" placeholder="Buy price (THB)">
-                    <span class="input-group-addon unit-container">THB</span>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="input-group">
-                    <input class="form-control amount" id="abt-amount-input" type="number" min="1" placeholder="Amount">
-                    <span class="input-group-addon unit-container" id="abt-unit">-</span>
-                  </div>
-                </div>
-                <div class="col-12 align-self-center compare-chart">
-                  <div class="abt-price-container">
-                    <div class="input-group exchange-row">
-                      <span class="input-group-addon order-container">1st</span>
-                      <span class="input-group-addon exchange-name-container" id="1st-exchanges">Exchanges name</span>
-                      <input type="text" class="form-control percent-container" id="1st-percent" placeholder="Profit (%)" disabled>
-                    </div>
-                    <div class="input-group profit-row">
-                      <span class="input-group-addon order-container">Total</span>
-                      <input type="text" class="form-control profit-container" id="1st-profit" placeholder="-" disabled>
-                      <span class="input-group-addon order-container">THB</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 align-self-center">
-                  <div class="abt-price-container exchange-row">
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="card">
+              <div class="card-header">
+                <img class="icon "src="img/eth-icon.png"> ETH
+              </div>
+              <div class="card-block">
+                <button type="button" class="btn btn-primary btn-copy" data-addr="MHhhOEE2ODQ1NjIxMDlEQTQxNTk5ZDc0ZTlGQzYzM2M0OTdFMjc4NDEy">Copy address</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="card">
+              <div class="card-header">
+                <img class="icon "src="img/omg-icon.png"> OMG
+              </div>
+              <div class="card-block">
+                <button type="button" class="btn btn-primary btn-copy" data-addr="MHgxYkMwQjVmRjEyNWRjRUI1NDNDZTk4NUQ1ZGU2Yjc0NDU5YjU0YjUz">Copy address</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="card">
+              <div class="card-header">
+                <img class="icon "src="img/bch-icon.png"> BCH
+              </div>
+              <div class="card-block">
+                <button type="button" class="btn btn-primary btn-copy" data-addr="MUNNa2tTNmhQNHhISk1tZVZIZDVIc290NlhCVk5ab0Yy">Copy address</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="card">
+              <div class="card-header">
+                <img class="icon "src="img/evx-icon.png"> EVX
+              </div>
+              <div class="card-block">
+                <button type="button" class="btn btn-primary btn-copy" data-addr="MHgxYkMwQjVmRjEyNWRjRUI1NDNDZTk4NUQ1ZGU2Yjc0NDU5YjU0YjUz">Copy address</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="card">
+              <div class="card-header">
+                <img class="icon "src="img/xrp-icon.png"> XRP
+              </div>
+              <div class="card-block">
+                  <button type="button" class="btn btn-primary btn-copy" data-addr="cnA3RnEyTlFWUkp4UUp2VVo0bzhaenNUU29jdmdZb0Jicw==">Copy address</button>
+                  <button type="button" class="btn btn-secondary btn-copy" data-addr="MTAwODc5MjA0MQ==">Copy dt</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="card">
+              <div class="card-header">
+                <img class="icon "src="img/das-icon.png"> DAS
+              </div>
+              <div class="card-block">
+                <button type="button" class="btn btn-primary btn-copy" data-addr="WHlHYTlCN2k0Z3hlN0d2ZHp4dzFxeW11aGRLRDJRamF1Rw==">Copy address</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="card">
+              <div class="card-header">
+                <img class="icon "src="img/ltc-icon.png"> LTC
+              </div>
+              <div class="card-block">
+                <button type="button" class="btn btn-primary btn-copy" data-addr="TE0xbzdZUmdrOWFaRGZIQlBreHRIajV6MW51VWJ1TjVSVQ==">Copy address</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+            <div class="card">
+              <div class="card-header">
+                <img class="icon "src="img/xzc-icon.png"> XZC
+              </div>
+              <div class="card-block">
+                <button type="button" class="btn btn-primary btn-copy" data-addr="YURSb2NITnVYSGVGWFhiUHpTU1pnTHl6eXdVdk1HOTdyQg==">Copy address</button>
+              </div>
+            </div>
+          </div>
+        </div>  
+      </div>    
+    </div>
+
+    <div class="full-container" id="arbitrage-board" style="display: none;">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 title btc-title">
+            <h2><img class="icon" src="img/btc-icon.png" alt="Bitcoin"> BTC</h2>
+          </div>
+          <div class="col-12 title eth-title">
+            <h2><img class="icon" src="img/eth-icon.png" alt="Ethereum"> ETH</h2>
+          </div>
+          <div class="col-12 title bch-title">
+            <h2><img class="icon" src="img/bch-icon.png" alt="Bitcoin cash"> BCH</h2>
+          </div>
+          <div class="col-12 title ltc-title">
+            <h2><img class="icon" src="img/ltc-icon.png" alt="Lite Coin"> LTC</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="full-container" id="calculator-board" style="display: none;">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 offset-md-2 col-md-8 offset-lg-2 col-lg-8 mt-5">
+            <div class="card">
+              <div class="card-header">
+                <div class="offset-xs-1 col-xs-10 offset-sm-1 col-sm-10 offset-md-3 col-md-6 offset-lg-3 col-lg-6">
+                  <select class="form-control form-control-sm" id="abt-select-coins">
+                    <option selected disabled>Select your cryptocurrencies</option>
+                    <option value="BTC">BTC</option>
+                    <option value="ETH">ETH</option>
+                    <option value="OMG">OMG</option>
+                    <option value="XRP">XRP</option>
+                    <option value="BCH">BCH</option>
+                    <option value="EVX">EVX</option>
+                    <option value="DAS">DAS</option>
+                    <option value="LTC">LTC</option>
+                    <option value="XZC">XZC</option>
+                  </select>
+              </div>
+            </div>
+              <div class="card-block">
+                <div class="row">
+                  <div class="col-12">
                     <div class="input-group">
-                      <span class="input-group-addon order-container" class="">2nd</span>
-                      <span class="input-group-addon exchange-name-container" id="2nd-exchanges">Exchanges name</span>
-                      <input type="text" class="form-control percent-container" id="2nd-percent" placeholder="Profit (%)" disabled>
-                    </div>
-                    <div class="input-group profit-row">
-                      <span class="input-group-addon order-container">Total</span>
-                      <input type="text" class="form-control profit-container" id="2nd-profit" placeholder="-" disabled>
-                      <span class="input-group-addon order-container">THB</span>
+                      <input class="form-control buy-price" id="abt-input" type="number" min="1" placeholder="Buy price (THB)">
+                      <span class="input-group-addon unit-container">THB</span>
                     </div>
                   </div>
-                </div>
-                <div class="col-12 align-self-center">
-                  <div class="abt-price-container">
-                    <div class="input-group exchange-row">
-                      <span class="input-group-addon order-container">3rd</span>
-                      <span class="input-group-addon exchange-name-container" id="3rd-exchanges">Exchanges name</span>
-                      <input type="text" class="form-control percent-container" id="3rd-percent" placeholder="Profit (%)" disabled>
+                  <div class="col-12">
+                    <div class="input-group">
+                      <input class="form-control amount" id="abt-amount-input" type="number" min="1" placeholder="Amount">
+                      <span class="input-group-addon unit-container" id="abt-unit">-</span>
                     </div>
-                    <div class="input-group profit-row">
-                      <span class="input-group-addon order-container">Total</span>
-                      <input type="text" class="form-control profit-container" id="3rd-profit" placeholder="-" disabled>
-                      <span class="input-group-addon order-container">THB</span>
+                  </div>
+                  <div class="col-12 align-self-center compare-chart">
+                    <div class="abt-price-container">
+                      <div class="input-group exchange-row">
+                        <span class="input-group-addon order-container">1st</span>
+                        <span class="input-group-addon exchange-name-container" id="1st-exchanges">Exchanges name</span>
+                        <input type="text" class="form-control percent-container" id="1st-percent" placeholder="Profit (%)" disabled>
+                      </div>
+                      <div class="input-group profit-row">
+                        <span class="input-group-addon order-container">Total</span>
+                        <input type="text" class="form-control profit-container" id="1st-profit" placeholder="-" disabled>
+                        <span class="input-group-addon order-container">THB</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 align-self-center">
+                    <div class="abt-price-container exchange-row">
+                      <div class="input-group">
+                        <span class="input-group-addon order-container" class="">2nd</span>
+                        <span class="input-group-addon exchange-name-container" id="2nd-exchanges">Exchanges name</span>
+                        <input type="text" class="form-control percent-container" id="2nd-percent" placeholder="Profit (%)" disabled>
+                      </div>
+                      <div class="input-group profit-row">
+                        <span class="input-group-addon order-container">Total</span>
+                        <input type="text" class="form-control profit-container" id="2nd-profit" placeholder="-" disabled>
+                        <span class="input-group-addon order-container">THB</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-12 align-self-center">
+                    <div class="abt-price-container">
+                      <div class="input-group exchange-row">
+                        <span class="input-group-addon order-container">3rd</span>
+                        <span class="input-group-addon exchange-name-container" id="3rd-exchanges">Exchanges name</span>
+                        <input type="text" class="form-control percent-container" id="3rd-percent" placeholder="Profit (%)" disabled>
+                      </div>
+                      <div class="input-group profit-row">
+                        <span class="input-group-addon order-container">Total</span>
+                        <input type="text" class="form-control profit-container" id="3rd-profit" placeholder="-" disabled>
+                        <span class="input-group-addon order-container">THB</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -667,33 +671,49 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="full-container" id="contact-board" style="display: none;">
-    <div class="container">
-      <h2>Contact</h2>
-      <div class="row">
-        <div class="col-xs-8 offset-xs-2 col-sm-8 offset-sm-2 col-md-4 offset-md-2 col-lg-4 offset-lg-2">
-          <img src="img/line-square.jpg" style="display: block; margin: 0 auto; width: 100%;"> 
-          <a href="https://line.me/ti/g2/JKCZX8U4L4" class="btn btn-success" target="_blank" style="display: block; margin-top: 10px; margin-bottom: 34px;">Join LINE Square</a>
-        </div>
-        <div class="col-xs-8 col-sm-8 col-md-4 col-lg-4">
-          <img src="img/facebook.png" style="display: block; margin: 0 auto; width: 100%;">
-          <a href="https://www.facebook.com/coinscomparator/" class="btn btn-primary" target="_blank" style="display: block; margin-top: 10px; margin-bottom: 34px;">Facebook Fanpage</a>
-        </div>
-      </div>  
-    </div>    
-  </div>
+    <div class="full-container" id="contact-board" style="display: none;">
+      <div class="container">
+        <h2>Contact</h2>
+        <div class="row">
+          <div class="col-xs-8 offset-xs-2 col-sm-8 offset-sm-2 col-md-4 offset-md-2 col-lg-4 offset-lg-2">
+            <img src="img/line-square.jpg" style="display: block; margin: 0 auto; width: 100%;"> 
+            <a href="https://line.me/ti/g2/JKCZX8U4L4" class="btn btn-success" target="_blank" style="display: block; margin-top: 10px; margin-bottom: 34px;">Join LINE Square</a>
+          </div>
+          <div class="col-xs-8 col-sm-8 col-md-4 col-lg-4">
+            <img src="img/facebook.png" style="display: block; margin: 0 auto; width: 100%;">
+            <a href="https://www.facebook.com/coinscomparator/" class="btn btn-primary" target="_blank" style="display: block; margin-top: 10px; margin-bottom: 34px;">Facebook Fanpage</a>
+          </div>
+        </div>  
+      </div>    
+    </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111347586-1"></script>
-  <script src="build/build.js"></script>
-</body>
+    <div class="full-container" id="settings-board" style="display: none;">
+      <div class="container">
+        <h2>Settings</h2>
+        <div class="form-group row">
+          <label for="base-currency" class="col-xs-12 col-sm-12 col-md-3 offset-md-3 col-lg-2 offset-lg-4 col-form-label">Base currency</label>
+          <div class="col-xs-12 col-sm-12 col-md-3 col-lg-2">
+            <select class="form-control" id="base-currency">
+              <option value="default" disabled>Select your currency</option>
+              <option value="thb">฿ THB</option>
+              <option value="usd">$ USD</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111347586-1"></script>
+    <script src="build/build.js"></script>
+  </body>
 </html>

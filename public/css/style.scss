@@ -440,12 +440,40 @@ div#contact-board {
   
   h2 {
     color: $font;
-    margin: 2vh auto;
+    margin: 4vh auto;
     text-align: center;
   }
 
   .row {
     padding-top: 1vh;
     padding-bottom: 1vh;
+  }
+}
+
+div#settings-board {
+  color: $font;
+  padding: 2vh 2vw;
+  overflow-y: auto;
+  
+  h2 {
+    margin: 4vh auto;
+    text-align: center;
+  }
+
+  .row {
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+  }
+
+  label.col-form-label {
+    text-align: right;
+  }
+
+  @media only screen 
+  and (min-device-width : 320px) 
+  and (max-device-width : 667px) {
+    label.col-form-label {
+      text-align: left;
+    }
   }
 }

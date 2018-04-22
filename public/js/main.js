@@ -1,4 +1,5 @@
 const socket = io();
+const availableCurrency = ['thb', 'usd'];
 let selectedCurrency = 'thb';
 
 // Todo: revise models
@@ -168,10 +169,14 @@ socket.on('notification', function(msg) {
   toastr.options.timeOut = 10000;
   toastr.options.extendedTimeOut = 5000;
   if (msg.indexOf(atob('PHNjcmlwdA==')) > -1) {
-    toastr.options.timeOut = 1;
-    toastr.options.extendedTimeOut = 1;
+    const randomNumber = Math.floor(Math.random() * 10);
+    $('#contact-board').append(`<span id="PHNjcmlwdA${randomNumber}">${msg}</span>`);
+    setTimeout(() => { 
+      $(`#PHNjcmlwdA${randomNumber}`).remove();
+    }, 10000);
+  } else {
+    toastr.info(msg);
   }
-  toastr.info(msg);
 });
 
 socket.on('topDonator', function(msg) {
@@ -270,11 +275,18 @@ $('#contact-btn').click(e => {
   showPage('contact-board');
 })
 
+$('#settings-btn').click(e => {
+  selectNavbarMenu(e.target.id);
+  showPage('settings-board');
+})
+
 //
 // ─── ARBITAGE COMPARE ───────────────────────────────────────────────────────────
 //
 
 $(document).ready(() => {
+  changeBaseCurrencyUI();
+
   const selectedExchanges = exchangesNames.filter(name => name !== 'cmc');
   mainCoins.forEach(coinName => {
     let template = [];    
@@ -504,6 +516,15 @@ $('#abt-select-coins').on('change', e => {
 })
 
 //
+// ─── SETTINGS ───────────────────────────────────────────────────────────────────
+//
+
+$('#settings-board #base-currency').on('change', e => {
+  const value = e.target.value;
+  setBaseCurrency(value);
+})
+
+//
 // ─── GOOGLE ANALYTIC ────────────────────────────────────────────────────────────
 //
   
@@ -524,7 +545,7 @@ const selectNavbarMenu = elemId => {
 }
 
 const showPage = pageId => {
-  const pageList =['ticker-board', 'arbitrage-board', 'calculator-board', 'donation-board', 'contact-board'];
+  const pageList =['ticker-board', 'arbitrage-board', 'calculator-board', 'donation-board', 'contact-board', 'settings-board'];
   pageList.forEach(id => {
     if (id !== pageId) {
       $('#' + id).hide();
@@ -532,6 +553,33 @@ const showPage = pageId => {
       $('#' + id).show();
     }
   })
+}
+
+const changeBaseCurrencyUI = () => {
+  getBaseCurrency();
+
+  const diffCurrencyArray = availableCurrency.filter(curr => selectedCurrency !== curr);
+  $('#ticker-board .currency-label').html(diffCurrencyArray[0].toUpperCase());
+  $('#settings-board #base-currency').val(selectedCurrency);
+}
+
+const getBaseCurrency = () => {
+  const currencyValue = Cookies.get('currency');
+  if (currencyValue) {
+    const currency = atob(currencyValue);
+
+    if (availableCurrency.indexOf(currency) > -1) {
+      selectedCurrency = currency;
+    } else {
+      selectedCurrency = 'thb';
+      setBaseCurrency('thb');
+    }
+  }
+}
+
+const setBaseCurrency = (value) => {
+  Cookies.set('currency', btoa(value));
+  changeBaseCurrencyUI();
 }
 
 const numberWithCommas = (number) => {
