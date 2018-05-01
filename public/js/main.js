@@ -3,6 +3,7 @@ const availableCurrency = ['thb', 'usd'];
 let selectedCurrency = 'thb';
 
 // Todo: revise models
+const coinNames = ['btc', 'eth', 'neo', 'bch', 'omg', 'xrp', 'evx', 'das', 'ltc', 'xzc'];
 const exchangesNames = ['bx', 'bfx', 'cb', 'btx', 'bin', 'cex', 'cmc', 'gdax'];
 const mainCoins = ['btc', 'eth', 'bch', 'ltc'];
 const exchangesFullNames = {
@@ -210,8 +211,6 @@ window.boardcast = function(msg) {
 //
 
 const forceSwitchCurrency = currency => {
-  const coinNames = ['btc', 'eth', 'bch', 'omg', 'xrp', 'evx', 'das', 'ltc', 'xzc'];
-  
   exchangesNames.forEach(excName => {
     coinNames.forEach(coinName => {
       let floatPrice = null;
