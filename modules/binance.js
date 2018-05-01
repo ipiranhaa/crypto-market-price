@@ -9,6 +9,7 @@ let btc2usd = '';
 const filter = [
   'BTCUSDT',  // BTC
   'ETHUSDT',  // ETH
+  'NEOUSDT',  // NEO
   'OMGBTC',   // OMG
   'XRPBTC',   // XRP
   'EVXBTC',   // EVX

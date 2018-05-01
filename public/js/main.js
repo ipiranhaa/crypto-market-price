@@ -29,6 +29,7 @@ exchangesNames.reduce((prev, curr) => {
   prev[curr] = {
     'BTC': JSON.parse(JSON.stringify(defaultModel)),
     'ETH': JSON.parse(JSON.stringify(defaultModel)),
+    'NEO': JSON.parse(JSON.stringify(defaultModel)),
     'OMG': JSON.parse(JSON.stringify(defaultModel)),
     'XRP': JSON.parse(JSON.stringify(defaultModel)), 
     'BCH': JSON.parse(JSON.stringify(defaultModel)), 

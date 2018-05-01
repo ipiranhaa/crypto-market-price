@@ -7,6 +7,7 @@ const url = "https://api.bitfinex.com/v1"
 const filter = [
   'btcusd', // BTC
   'ethusd', // ETH
+  'neousd', // NEO
   'omgusd', // OMG
   'xrpusd', // XRP
   'bchusd', // BCH

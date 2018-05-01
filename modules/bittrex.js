@@ -7,6 +7,7 @@ const url = "https://bittrex.com/api/v1.1/public"
 const filter = [
   'USDT-BTC',   // BTC
   'USDT-ETH',   // ETH
+  'USDT-NEO',   // NEO
   'USDT-OMG',   // OMG
   'USDT-XRP',   // XRP
   'USDT-BCC',   // BCH

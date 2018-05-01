@@ -19,6 +19,7 @@ const filter = [
 const symbols = [
   'bitcoin',
   'ethereum',
+  'neo',
   'omisego',
   'ripple',
   'bitcoin-cash',
