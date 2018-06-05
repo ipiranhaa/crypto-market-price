@@ -43,6 +43,9 @@ const settings = {
   servPort: 3000,
   fetchCurrencyTime: 600000,
   fetchPriceTime: 20000,
+  fetchTiming: {
+    bitfinex: 30000
+  },
   noticeTime: 3600000
 }
 
@@ -213,6 +216,13 @@ setInterval(function(){
     io.emit('gdax', data);
   });
 }, settings.fetchPriceTime);
+
+setInterval(function () {
+  bfx.fetch(function (data) {
+    bfxCache = data;
+    io.emit('bfx', data);
+  });
+}, settings.fetchTiming.bitfinex);
 
 // Auto notification
 setInterval(function(){

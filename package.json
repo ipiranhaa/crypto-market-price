@@ -11,6 +11,7 @@
     "lodash": "^4.17.4",
     "node-currency-swap": "^1.0.6",
     "node-sass": "^4.5.3",
+    "nodemon": "^1.17.5",
     "socket.io": "^2.0.3",
     "uglify-es": "^3.1.2"
   },
@@ -29,6 +30,7 @@
   },
   "scripts": {
     "start": "node app.js",
+    "start:dev": "nodemon app.js",
     "build": "gulp build",
     "dev": "gulp dev"
   },
