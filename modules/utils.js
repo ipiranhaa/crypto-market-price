@@ -23,11 +23,11 @@ let curentCurrency = {
 
 function fetch(from, to, callback) {
   callback = callback || function(){};
-  const uri = "http://api.fixer.io/latest?base=USD";
+  const uri = "http://free.currencyconverterapi.com/api/v5/convert?q=USD_THB&compact=y";
   request.get(uri, function(err, resp, body) {
     if (!err && resp.body[0] !== '<') {
       body = JSON.parse(body);
-      callback(body.rates[to.toUpperCase()]);
+      callback(body['USD_THB']['val']);
     }
   });
 }

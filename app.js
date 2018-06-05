@@ -35,7 +35,7 @@ let isGdaxFetched = false;
 
 const configMsg = {
   hello: 'สวัสดีครับ',
-  donate: 'อย่าลืม Donate ให้กำลังใจกันด้วยนะครับ',
+  donate: 'อย่าลืม Donate ให้กำลังใจกันด้วยนะครับ 💖',
   topDonator: 'Krisada: ฿750 THB'
 }
 
@@ -43,7 +43,7 @@ const settings = {
   servPort: 3000,
   fetchCurrencyTime: 600000,
   fetchPriceTime: 20000,
-  noticeTime: 10800000
+  noticeTime: 3600000
 }
 
 const server = app.listen(process.env.PORT || settings.servPort, function() {
@@ -215,9 +215,9 @@ setInterval(function(){
 }, settings.fetchPriceTime);
 
 // Auto notification
-// setInterval(function(){
-//   welcomeMsg(socket)
-// }, settings.noticeTime);
+setInterval(function(){
+  welcomeMsg(socket)
+}, settings.noticeTime);
  
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
