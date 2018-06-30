@@ -10,7 +10,7 @@ const filter = [
   'USDT-NEO',   // NEO
   'USDT-OMG',   // OMG
   'USDT-XRP',   // XRP
-  'USDT-BCC',   // BCH
+  'USDT-BCH',   // BCH
   'USDT-DASH',  // DAS
   'USDT-LTC',   // LTC
   'BTC-XZC'     // XZC

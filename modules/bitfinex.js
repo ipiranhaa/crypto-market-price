@@ -50,8 +50,9 @@ function fetch(callback) {
         val.push(parser(data));
       }
 
-      if (val.length === filter.length) {
-        callback(val);
+      if (val.length === filter.length
+        && !_.every(val, ['last_price_usd', undefined])) {
+          callback(val);
       }
     });
   })
