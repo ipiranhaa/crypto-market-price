@@ -5,7 +5,7 @@
   </a>
 </h2>
 
-A simple responsive web application for watch cryptocurrency exchanges price.
+A simple responsive web application for monitoring cryptocurrency exchanges price.
 
 #### [Live Demo](http://goo.gl/KZUXTj)
 
