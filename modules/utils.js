@@ -23,7 +23,7 @@ let curentCurrency = {
 
 function fetch(from, to, callback) {
   callback = callback || function(){};
-  const uri = "http://free.currencyconverterapi.com/api/v5/convert?q=USD_THB&compact=y";
+  const uri = "https://free.currencyconverterapi.com/api/v6/convert?q=USD_THB&compact=ultra&apiKey=c47bd4ab0930b7aa5658";
   request.get(uri, function(err, resp, body) {
     if (!err && resp.body[0] !== '<') {
       body = JSON.parse(body);
