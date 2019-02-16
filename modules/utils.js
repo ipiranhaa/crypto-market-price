@@ -27,7 +27,7 @@ function fetch(from, to, callback) {
   request.get(uri, function(err, resp, body) {
     if (!err && resp.body[0] !== '<') {
       body = JSON.parse(body);
-      callback(body['USD_THB']['val']);
+      callback(body['USD_THB']);
     }
   });
 }
