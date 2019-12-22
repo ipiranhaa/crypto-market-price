@@ -8,7 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.15.4",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.13",
     "node-currency-swap": "^1.0.6",
     "node-sass": "^4.5.3",
     "nodemon": "^1.17.5",
