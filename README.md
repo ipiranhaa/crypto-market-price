@@ -12,7 +12,6 @@ A simple responsive web application for monitoring cryptocurrency exchanges pric
 > I'm working on a new version at [coins-comp](https://github.com/ipiranhaa/coins-comp)
 
 ### Available exchanges
-* <a href="https://bx.in.th" target="_blank">bx.in.th</a>
 * <a href="https://bitfinex.com" target="_blank">bitfinex.com</a>
 * <a href="https://bittrex.com" target="_blank">bittrex.com</a>
 * <a href="https://www.binance.com" target="_blank">binance.com</a>

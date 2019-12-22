@@ -4,10 +4,9 @@ let selectedCurrency = 'thb';
 
 // Todo: revise models
 const coinNames = ['btc', 'eth', 'neo', 'bch', 'omg', 'xrp', 'evx', 'das', 'ltc', 'xzc'];
-const exchangesNames = ['bx', 'bfx', 'cb', 'btx', 'bin', 'cex', 'cmc', 'gdax'];
+const exchangesNames = ['bfx', 'cb', 'btx', 'bin', 'cex', 'cmc', 'gdax'];
 const mainCoins = ['btc', 'eth', 'bch', 'ltc'];
 const exchangesFullNames = {
-  'bx': 'BX',
   'bfx': 'Bitfinex',
   'cb': 'Coinbase',
   'btx': 'Bittrex',
@@ -78,16 +77,6 @@ function assignHtmlValue(htmlClass, msg) {
 
 socket.on('online', function(msg) {
   $('span.users').html(msg);
-});
-
-socket.on('bx', function(msg) {
-  assignHtmlValue('bx', msg);
-  
-  msg.forEach(coin => {
-    Object.assign(collection.bx[coin.name], coin);
-  })
-
-  assignArbitrageTableDetail();
 });
 
 socket.on('bfx', function(msg) {
