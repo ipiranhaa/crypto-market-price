@@ -10,7 +10,7 @@
     "express": "^4.17.1",
     "lodash": "^4.17.21",
     "node-currency-swap": "^1.0.6",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "nodemon": "^2.0.2",
     "socket.io": "^2.4.0",
     "uglify-es": "^3.1.2"
